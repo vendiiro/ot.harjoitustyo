@@ -1,4 +1,4 @@
-# Ohte:n kurssi
+# Ohte:n kurssin harjoitustyö
 '#'
 '####'
 
@@ -7,5 +7,12 @@
 
 - Tämä on **mun** uus *gitti*
  - Mun nimi on Iiro
+ #
+ 
+ ** Tehtävät **
+ -Viikko 1
+ 
+https://github.com/vendiiro/ot.harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt
 
 
+https://github.com/vendiiro/ot.harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt
