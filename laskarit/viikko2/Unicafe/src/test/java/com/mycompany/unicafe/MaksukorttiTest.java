@@ -57,5 +57,6 @@ public class MaksukorttiTest {
     @Test
     public void saldoAlussaOikein() {
         assertEquals(ALKUSALDO, kortti.saldo());
+
     }
 }
