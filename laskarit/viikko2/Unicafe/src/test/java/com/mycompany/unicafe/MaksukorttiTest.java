@@ -7,10 +7,11 @@ import org.junit.Test;
 public class MaksukorttiTest {
 
     Maksukortti kortti;
+    int ALKUSALDO = 1000;
 
     @Before
     public void setUp() {
-        kortti = new Maksukortti(1000);
+        kortti = new Maksukortti(ALKUSALDO);
     }
 
     @Test
@@ -21,6 +22,7 @@ public class MaksukorttiTest {
     @Test
     public void saldoOikein() {
         assertEquals("saldo: 10.0", kortti.toString());
+
     }
 
     @Test
@@ -41,13 +43,19 @@ public class MaksukorttiTest {
         kortti.otaRahaa(30);
         assertEquals("saldo: 0.0", kortti.toString());
     }
-    @Test 
-    public void riittaaRahat(){
+
+    @Test
+    public void riittaaRahat() {
         assertTrue(kortti.otaRahaa(200));
     }
+
     @Test
-    public void eiRiitaRahat(){
+    public void eiRiitaRahat() {
         assertFalse(kortti.otaRahaa(2000));
     }
 
+    @Test
+    public void saldoAlussaOikein() {
+        assertEquals(ALKUSALDO, kortti.saldo());
+    }
 }
