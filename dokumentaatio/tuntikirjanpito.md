@@ -24,6 +24,4 @@ Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seura
 - käyttäjälle annetaan salasana, joka täytyy antaa käyttäjätunnuksen lisäksi kirjauduttaessa sisään sovellukseen 
 - Käyttäjälle voidaan antaa lisää tietoja esim. oma nimi, treeni kokemus vuosissa 
     
-Ohjelmiston vaatimuksiin kuuluvat myös toimintaympäristön rajoitteet. Treenipäivis-sovellusta koskevat seuraavat rajoitteet
-    - ohjelmiston tulee toimia Linux- ja OSX-käyttöjärjestelmillä varustetuissa koneissa 
-    - käyttäjien ja Treenipäiviksen tiedot talletetaan paikallisen koneen levylle 
+
