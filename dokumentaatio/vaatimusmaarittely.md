@@ -1,6 +1,8 @@
 
 
-**Vaativuusmäärittely Treenipäivis**
+# Vaativuusmäärittely 
+
+**Treenipäivis**
 
 Sovelluksen avulla käyttäjien on mahdollista pitää treenipäiväkirjaa, joka koostuu päiväkohtaisista muistiinpanoista. 
 Yhteen päiväkohtaiseen muistiinpanoon kirjataan päivämäärä, treenin pituus minuutteina ja millainen treeni suoritettiin
