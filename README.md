@@ -1,7 +1,7 @@
 # Ohjelmistotekniikan harjoitustyö
 
-# Treenipäivis-sovellus
-# Sovelluksen nimi pending
+**Treenipäivis-sovellus
+**Sovelluksen nimi pending
 
 
 **Täällä on vähä kaikkee**
