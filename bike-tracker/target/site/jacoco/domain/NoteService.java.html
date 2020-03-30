@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fi"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NoteService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">domain</a> &gt; <span class="el_source">NoteService.java</span></div><h1>NoteService.java</h1><pre class="source lang-java linenums">package domain;
+
+import dao.NoteDao;
+import dao.UserDao;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+
+/**
+ * Sovelluslogiikasta vastaava luokka. 
+ */
+public class NoteService {
+    private NoteDao noteDao;
+    private UserDao userDao;
+    private User currentUser;
+    
+    /**
+     * Konstruktori.
+     * @param noteDao Käyttäjän muistiinpanojen käsittely
+     * @param userDao  Käyttäjän tietojen käsittely
+     */
+<span class="fc" id="L26">    public NoteService(NoteDao noteDao, UserDao userDao) {</span>
+<span class="fc" id="L27">        this.noteDao = noteDao;</span>
+<span class="fc" id="L28">        this.userDao = userDao;</span>
+<span class="fc" id="L29">    }</span>
+    
+    
+    /**
+     * Metodi poistaa muistiinpanon nykyisen käyttäjän antamalta
+     * päivämäärältä.
+     * 
+     * @param date Nykyisen käyttäjän antama päivämäärä
+     * @return palautetaan true jos muistiinpanon poistaminen onnistui,
+     * tai palautetaan false jos annetulla päivämäärällä ei ole muistiinpanoa
+     * 
+     * @throws SQLException virhe tietokannassa
+     */
+    public boolean deleteNote(LocalDate date) throws SQLException  {
+<span class="fc" id="L43">        List&lt;Note&gt; list = noteDao.getAll(currentUser);</span>
+<span class="fc" id="L44">        boolean result = false;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        for (Note note : list) {</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">            if (note.getDate().equals(date)) {</span>
+<span class="fc" id="L47">                result = true;</span>
+            }
+<span class="fc" id="L49">        }</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (result == true) {</span>
+<span class="fc" id="L51">            this.noteDao.deleteNote(date, currentUser);</span>
+        } 
+<span class="fc" id="L53">        return result;</span>
+    }
+    
+
+    /**
+     * Metodi palauttaa nykyisen käyttäjän kokonaiskilometrit.
+     * 
+     * @return pyöräillyt kilometrit yhteensä, tai 0 jos ei kilometreja
+     * 
+     * @throws SQLException virhe tietokannassa
+     */
+    
+    public int kmTotal() throws SQLException {
+<span class="fc" id="L66">        return noteDao.kmTotal(currentUser);</span>
+    }
+    
+    /**
+     * Metodi palauttaa nykyisen käyttäjän kaikki muistiinpanot.
+     * 
+     * @return lista muistiinpanoista, tai tyhjä lista jos muistiinpanoja ei ole
+     * 
+     * @throws SQLException virhe tietokannassa
+     */
+    public List&lt;Note&gt; getAll() throws SQLException {
+<span class="fc" id="L77">        return noteDao.getAll(currentUser);          </span>
+    }
+    
+    /**
+     * Metodi luo uuden muistiinpanon nykyiselle käyttäjälle.
+     * 
+     * @param date Muistiinpanon päivämäärä
+     * @param km Kuinka monta kilometria muistiinpanoon liittyy
+     * @param content Teksti, joka halutaan liittää osaksi muistiinpanoa
+     * 
+     * @return true jos muistiinpanon luominen onnistuu
+     * 
+     * @throws SQLException virhe tietokannassa
+     */
+    public boolean createNote(LocalDate date, int km, String content) throws SQLException {       
+<span class="fc" id="L92">        noteDao.create(date, km, content, currentUser);  </span>
+<span class="fc" id="L93">        return true;</span>
+    }
+    
+    /**
+     * Metodin avulla käyttäjä, jolla on jo käyttäjätunnus, kirjautuu sisään.
+     * 
+     * @param username Käyttäjänimi
+     * 
+     * @return true jos sisäänkirjautuminen onnistuu, false jos käyttäjänimeä
+     * ei ole olemassa
+     * 
+     * @throws SQLException virhe tietokannassa
+     */
+    public boolean login(String username) throws SQLException {
+<span class="fc" id="L107">        User user = userDao.findByUsername(username);</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">        if (user == null) {</span>
+<span class="fc" id="L109">            return false;</span>
+        }
+<span class="fc" id="L111">        currentUser = user;</span>
+<span class="fc" id="L112">        return true;</span>
+    }
+    
+    /**
+     * Metodi kirjaa nykyisen käyttäjän ulos ohjelmasta.
+     */
+    public void logout() {
+<span class="fc" id="L119">        currentUser = null;</span>
+<span class="fc" id="L120">    }</span>
+    
+    /**
+     * Metodi luo uuden käyttäjän.
+     * 
+     * @param name Käyttäjän nimi
+     * @param username Käyttäjän käyttäjänimi
+     * 
+     * @return true jos käyttäjän luominen onnistuu, false jos ei onnistu 
+     * 
+     * @throws SQLException virhe tietokannassa
+     */
+    public boolean createUser(String name, String username) throws SQLException {
+<span class="fc bfc" id="L133" title="All 2 branches covered.">        if (userDao.findByUsername(username) != null) {</span>
+<span class="fc" id="L134">            return false;</span>
+        }
+<span class="fc" id="L136">        userDao.create(name, username);</span>
+<span class="fc" id="L137">        return true;</span>
+    }
+
+    /**
+     * Metodi palauttaa nykyisen käyttäjän.
+     * 
+     * @return nykyinen käyttäjä 
+     */
+    public User getLoggedUser() {
+<span class="fc" id="L146">        return currentUser;</span>
+    }
+    
+    /**
+     * Metodi kertoo onko käyttäjä kirjautuneena sisään.
+     * 
+     * @return false jos käyttäjä on sisäänkirjautuneena, false jos ei
+     */
+    public boolean isUserLoggedIn() {
+<span class="fc bfc" id="L155" title="All 2 branches covered.">        if (currentUser == null) {</span>
+<span class="fc" id="L156">            return false;</span>
+        } 
+<span class="fc" id="L158">        return true;</span>
+    }
+        
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

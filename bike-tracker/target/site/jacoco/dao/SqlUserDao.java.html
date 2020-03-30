@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fi"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SqlUserDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">dao</a> &gt; <span class="el_source">SqlUserDao.java</span></div><h1>SqlUserDao.java</h1><pre class="source lang-java linenums">package dao;
+
+import domain.User;
+import java.sql.*;
+
+/**
+ * Luokka vastaa käyttäjän luomisesta ja käyttäjän tietojen etsimisestä 
+ * SQL-tietokannasta.
+ */
+public class SqlUserDao implements UserDao {
+
+    private Database database;
+    
+    /**
+     * Konstruktori.
+     * @param database tietokanta 
+     */
+<span class="fc" id="L18">    public SqlUserDao(Database database) {</span>
+<span class="fc" id="L19">        this.database = database;</span>
+<span class="fc" id="L20">    }</span>
+  
+     /**
+     * Metodi luo uuden käyttäjän.
+     * 
+     * @param name Käyttäjän nimi
+     * @param username Käyttäjän käyttäjänimi
+     * 
+     * @return Luotu käyttäjä
+     * @throws SQLException virhe tietokannassa
+     */
+    @Override    
+    public User create(String name, String username) throws SQLException {
+<span class="fc" id="L33">        Connection conn = database.getConnection();  </span>
+        
+<span class="fc" id="L35">        PreparedStatement stmt = conn.prepareStatement(&quot;INSERT INTO User (name, username) VALUES (?,?)&quot;);</span>
+
+<span class="fc" id="L37">        stmt.setString(1, name);</span>
+<span class="fc" id="L38">        stmt.setString(2, username);</span>
+
+<span class="fc" id="L40">        stmt.executeUpdate();</span>
+
+<span class="fc" id="L42">        stmt.close();</span>
+<span class="fc" id="L43">        conn.close();</span>
+
+<span class="fc" id="L45">        return findByUsername(username);</span>
+    }
+
+    /**
+     * Metodi etsii annettua käyttäjänimeä vastaavan käyttäjän tietokannasta.
+     * 
+     * @param username Käyttäjänimi
+     * 
+     * @return parametrina annettuun käyttäjänimeen liittyvä käyttäjä,
+     * tai null jos käyttäjänimi on vielä vapaa
+     * 
+     * @throws SQLException virhe tietokannassa
+     */
+    @Override
+    public User findByUsername(String username) throws SQLException {
+<span class="fc" id="L60">        Connection conn = database.getConnection();</span>
+            
+<span class="fc" id="L62">        PreparedStatement stmt = conn.prepareStatement(&quot;SELECT * FROM User WHERE username = ?&quot;);</span>
+
+<span class="fc" id="L64">        stmt.setString(1, username);</span>
+
+<span class="fc" id="L66">        ResultSet rs = stmt.executeQuery();</span>
+        
+<span class="fc" id="L68">        boolean hasOne = rs.next();</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        if (!hasOne) {</span>
+<span class="fc" id="L70">            rs.close();</span>
+<span class="fc" id="L71">            stmt.close();</span>
+<span class="fc" id="L72">            conn.close();</span>
+<span class="fc" id="L73">            return null;</span>
+        }
+        
+<span class="fc" id="L76">        User u = new User(rs.getString(&quot;name&quot;), rs.getString(&quot;username&quot;), rs.getInt(&quot;id&quot;));</span>
+        
+<span class="fc" id="L78">        rs.close();</span>
+<span class="fc" id="L79">        stmt.close();</span>
+<span class="fc" id="L80">        conn.close();</span>
+
+<span class="fc" id="L82">        return u;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
