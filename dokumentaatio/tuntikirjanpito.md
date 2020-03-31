@@ -5,5 +5,6 @@ PVM | Aika | Mitä tuli tehtyä
 24.3 | 2h | dokumentit tuli tehtyy
 28.3| 4h | materiaaleihin tutustumista
 28.3| 2h | työn suunnittelua ja testausta
-
+30.3| 3h | perehdyin daoon ja tutustuinsyksyn tikapeen
+31.3| 8h | työn kanssa tappelua komentorivillä ja testit
 
