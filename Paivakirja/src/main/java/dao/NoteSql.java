@@ -29,41 +29,13 @@ public class NoteSql implements DaoNote{
         
         @Override
     public Note create(LocalDate date, int min, String content, User user) throws SQLException {
-        
-            try (Connection conn = database.getConnection(); PreparedStatement stmt = conn.prepareStatement("INSERT INTO Note (date, min, content, user) VALUES (?,?,?,?)")) {
-                stmt.setDate(1, Date.valueOf(date));
-                stmt.setInt(2, min);
-                stmt.setString(3, content);
-                stmt.setInt(4, user.getId());
-                
-                stmt.executeUpdate();
-                
-            }
+                         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
-        return getUserWithDate(user, date);            
     }
     
     public Note getUserWithDate(User user, LocalDate date) throws SQLException {
-        String username = user.getUsername();        
-        
-        Note n;
-            try (Connection conn = database.getConnection()) {
-                PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Note, User WHERE User.username = ? AND Note.date = ?");
-                stmt.setString(1, username);
-                stmt.setDate(2, Date.valueOf(date));
-                ResultSet rs = stmt.executeQuery();
-                boolean hasOne = rs.next();
-                if (!hasOne) {
-                    rs.close();
-                    stmt.close();
-                    conn.close();
-                    return null;
-                }       n = new Note(rs.getDate("date").toLocalDate(), rs.getInt("min"), rs.getString("content"), user, rs.getInt("id"));
-                rs.close();
-                stmt.close();
-            }
-
-        return n;        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+           
     }
 
     @Override

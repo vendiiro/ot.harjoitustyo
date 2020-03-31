@@ -28,20 +28,33 @@ public class Note {
         return this.date;
     }
    
+    public void setMinutes(int length){
+        this.length = length;
+    }
   
     public int getMinutes() {
         return this.length;
     }
 
+    public void setContent (String content){
+        this.content=content;
+    }
     
     public String getContent() {
         return this.content;
     }
    
+    public void setUser(User user){
+        this.user=user;
+    }
     
     public User getUser() {
         return this.user;
     }
+    
+    public void setId (int id) {
+    this.id=id;
+}
     
      public int getId() {
         return this.id;

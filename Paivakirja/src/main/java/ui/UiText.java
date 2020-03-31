@@ -30,12 +30,37 @@ public class UiText {
     public void start() {
         System.out.println("**Why r u not working on tira**");
         printInstructions();
-        while (true) {
-            System.out.println();
-            System.out.println("Command: ");
-            String command = reader.nextLine();
-            System.out.println("");
-
+        try{
+         while (true) {
+                System.out.println();
+                System.out.println("Command: "); 
+                String command = reader.nextLine();
+                System.out.println("");
+                if (!commands.keySet().contains(command)) {
+                    System.out.println("Command was not recognized.");
+                    printInstructions();
+                }
+                if (command.equals("x")) {
+                    System.out.println("logout");
+                    break;
+                } else if (command.equals("1")) {
+                    System.out.println("create user");
+                } else if (command.equals("2")) {
+                    System.out.println("login");
+                } else if (command.equals("3")) {
+                    System.out.println("create note");        
+                } else if (command.equals("4")) {
+                    System.out.println("time wasted while training");
+                } else if (command.equals("5")) {
+                    System.out.println("get all notes");  
+                } else if (command.equals("6")) {
+                    System.out.println("get all notes");
+                } 
+            }
+        } catch (Exception e)  {
+            System.out.println("Oops, something went wrong. The program is closed. Please try again later!");
+        
+    
     }
     }
      private void printInstructions() {
