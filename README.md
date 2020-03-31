@@ -5,19 +5,8 @@
 **Sovelluksen nimi pending**
 
 
-**Täällä on vähä kaikkee**
-
-- Tämä on **mun** uus *gitti*
- - SE rimmaa _hitti_ kans
- 
- **Tehtävät**
- * Viikko 1
- 
-[gitlog.txt](https://github.com/vendiiro/ot.harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
-
-[komentorivi.txt](https://github.com/vendiiro/ot.harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
-
-* Viikko 2
+# Harjoitustyö
+Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja kirjaamaan treenissä sattuvia muistiinpanoja kuten loukkaantumisia treeni muotoja yms.
 
 [vaatimusmaarittely.md](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
