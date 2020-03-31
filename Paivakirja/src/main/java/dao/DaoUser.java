@@ -6,6 +6,7 @@
 package dao;
 
 import domain.User;
+import java.sql.SQLException;
 
 /**
  *
@@ -13,9 +14,9 @@ import domain.User;
  */
 public interface DaoUser {
     
-    User create(String name, String username); 
+    User create(String name, String username) throws SQLException; 
     
     
-    User findByUsername(String username);
+    User getUsingUsername(String username) throws SQLException;
     
 }

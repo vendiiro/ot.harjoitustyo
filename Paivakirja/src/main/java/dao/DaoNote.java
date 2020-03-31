@@ -17,7 +17,7 @@ public interface DaoNote {
    
     List<Note> getAll(User user) throws SQLException;
   
-    int totalTime(User user) throws SQLException;
+    int totalTimeWasted(User user) throws SQLException;
     
     
     boolean deleteNote(LocalDate date, User user) throws SQLException;

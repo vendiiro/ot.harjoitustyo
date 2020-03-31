@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class NoteSql implements DaoNote{
     
-        private Database database;
+        private final Database database;
         
          public NoteSql(Database database) {
         this.database = database;
@@ -30,45 +30,38 @@ public class NoteSql implements DaoNote{
         @Override
     public Note create(LocalDate date, int min, String content, User user) throws SQLException {
         
-        Connection conn = database.getConnection();
-            
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Note (date, min, content, user) VALUES (?,?,?,?)");
-        stmt.setDate(1, Date.valueOf(date));
-        stmt.setInt(2, min);
-        stmt.setString(3, content);           
-        stmt.setInt(4, user.getId()); 
+            try (Connection conn = database.getConnection(); PreparedStatement stmt = conn.prepareStatement("INSERT INTO Note (date, min, content, user) VALUES (?,?,?,?)")) {
+                stmt.setDate(1, Date.valueOf(date));
+                stmt.setInt(2, min);
+                stmt.setString(3, content);
+                stmt.setInt(4, user.getId());
+                
+                stmt.executeUpdate();
+                
+            }
 
-        stmt.executeUpdate();
-
-        stmt.close();
-        conn.close();
-
-        return findByUsernameAndDate(user, date);            
+        return getUserWithDate(user, date);            
     }
     
-    public Note findByUsernameAndDate(User user, LocalDate date) throws SQLException {
+    public Note getUserWithDate(User user, LocalDate date) throws SQLException {
         String username = user.getUsername();        
         
-        Connection conn = database.getConnection();
-            
-        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Note, User WHERE User.username = ? AND Note.date = ?");
-        stmt.setString(1, username);
-        stmt.setDate(2, Date.valueOf(date));
-
-        ResultSet rs = stmt.executeQuery();
-        boolean hasOne = rs.next();
-        if (!hasOne) {
-            rs.close();
-            stmt.close();
-            conn.close();
-            return null;
-        }
-
-        Note n = new Note(rs.getDate("date").toLocalDate(), rs.getInt("km"), rs.getString("content"), user, rs.getInt("id"));
-
-        rs.close();
-        stmt.close();
-        conn.close();
+        Note n;
+            try (Connection conn = database.getConnection()) {
+                PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Note, User WHERE User.username = ? AND Note.date = ?");
+                stmt.setString(1, username);
+                stmt.setDate(2, Date.valueOf(date));
+                ResultSet rs = stmt.executeQuery();
+                boolean hasOne = rs.next();
+                if (!hasOne) {
+                    rs.close();
+                    stmt.close();
+                    conn.close();
+                    return null;
+                }       n = new Note(rs.getDate("date").toLocalDate(), rs.getInt("min"), rs.getString("content"), user, rs.getInt("id"));
+                rs.close();
+                stmt.close();
+            }
 
         return n;        
     }
@@ -79,7 +72,7 @@ public class NoteSql implements DaoNote{
     }
 
     @Override
-    public int totalTime(User user) throws SQLException {
+    public int totalTimeWasted(User user) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
