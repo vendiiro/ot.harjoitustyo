@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface DaoNote {
-    Note create(LocalDate date, int km, String content, User user) throws SQLException;
+    Note create(LocalDate date, int min, String content, User user) throws SQLException;
     
    
     List<Note> getAll(User user) throws SQLException;

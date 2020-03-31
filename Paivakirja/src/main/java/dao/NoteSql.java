@@ -28,13 +28,13 @@ public class NoteSql implements DaoNote{
     }
         
         @Override
-    public Note create(LocalDate date, int km, String content, User user) throws SQLException {
+    public Note create(LocalDate date, int min, String content, User user) throws SQLException {
         
         Connection conn = database.getConnection();
             
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO Note (date, min, content, user) VALUES (?,?,?,?)");
         stmt.setDate(1, Date.valueOf(date));
-        stmt.setInt(2, km);
+        stmt.setInt(2, min);
         stmt.setString(3, content);           
         stmt.setInt(4, user.getId()); 
 

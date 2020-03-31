@@ -16,19 +16,19 @@ import java.util.List;
  * @author iiro
  */
 public class NoteService {
-     private DaoNote noteDao;
-    private DaoUser userDao;
-    private User currentUser;
+     private DaoNote daoNote;
+    private DaoUser daoUser;
+    private User existingUser;
     
     
-    public NoteService(DaoNote noteDao, DaoUser userDao) {
-        this.noteDao = noteDao;
-        this.userDao = userDao;
+    public NoteService(DaoNote daoNote, DaoUser daoUser) {
+        this.daoNote = daoNote;
+        this.daoUser = daoUser;
     }
     
     
     public boolean deleteNote(LocalDate date) throws SQLException  {
-        List<Note> list = noteDao.getAll(currentUser);
+        List<Note> list = daoNote.getAll(existingUser);
         boolean result = false;
         for (Note note : list) {
             if (note.getDate().equals(date)) {
@@ -36,19 +36,19 @@ public class NoteService {
             }
         }
         if (result == true) {
-            this.noteDao.deleteNote(date, currentUser);
+            this.daoNote.deleteNote(date, existingUser);
         } 
         return result;
     }
     
 
     public List<Note> getAll() throws SQLException {
-        return noteDao.getAll(currentUser);          
+        return daoNote.getAll(existingUser);          
     }
     
    
-    public boolean createNote(LocalDate date, int km, String content) throws SQLException {       
-        noteDao.create(date, km, content, currentUser);  
+    public boolean createNote(LocalDate date, int min, String content) throws SQLException {       
+        daoNote.create(date, min, content, existingUser);  
         return true;
     }
     
