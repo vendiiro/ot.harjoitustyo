@@ -58,7 +58,7 @@ public class UiText {
                 } 
             }
         } catch (Exception e)  {
-            System.out.println("Oops, something went wrong. The program is closed. Please try again later!");
+            System.out.println("Well that didn't go as planned. Sorry but the program is closed. While we work on that U work on tira!!!!");
         
     
     }
