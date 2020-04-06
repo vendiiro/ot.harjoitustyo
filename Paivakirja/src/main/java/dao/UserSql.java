@@ -15,14 +15,14 @@ import java.sql.SQLException;
  *
  * @author iiro
  */
-public class UserSql {
+public class UserSql implements DaoUser{
     private Database database;
     
-    public UserSql(Database database) {
+    public UserSql (Database database) {
         this.database = database;
     }
     
-    public User createNewUser(String name, String username) throws SQLException {
+    public User create(String name, String username) throws SQLException {
         Connection conn = database.getConnection();  
         
         PreparedStatement stmnt = conn.prepareStatement("INSERT INTO User (name, username) VALUES (?,?)");
@@ -35,10 +35,10 @@ public class UserSql {
         stmnt.close();
         conn.close();
 
-        return findUserByUsername(username);
+        return getUsingUsername(username);
     }
 
-    public User findUserByUsername(String username) throws SQLException {
+    public User getUsingUsername(String username) throws SQLException {
         Connection conn = database.getConnection();
             
         PreparedStatement stmnt = conn.prepareStatement("SELECT * FROM User WHERE username = ?");
@@ -63,4 +63,6 @@ public class UserSql {
 
         return usr;
     }
+
+
 }

@@ -7,6 +7,7 @@ package domain;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Note {
     private LocalDate date;
@@ -67,4 +68,48 @@ public class Note {
         return "Date: " + this.date.format(DTF) + "\n" + "Length of the training session: " + 
                 this.length + "\n" + "Your notes from this session: " + this.content;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 17 * hash + Objects.hashCode(this.date);
+        hash = 17 * hash + this.length;
+        hash = 17 * hash + Objects.hashCode(this.content);
+        hash = 17 * hash + Objects.hashCode(this.user);
+        hash = 17 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Note other = (Note) obj;
+        if (this.length != other.length) {
+            return false;
+        }
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.content, other.content)) {
+            return false;
+        }
+        if (!Objects.equals(this.date, other.date)) {
+            return false;
+        }
+        if (!Objects.equals(this.user, other.user)) {
+            return false;
+        }
+        return true;
+    }
+   
+    
+    
 }
