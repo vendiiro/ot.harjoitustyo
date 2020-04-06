@@ -1,5 +1,8 @@
 # Arkkitehtuurikuvaus
 . . . 
+# Rakenne
+
+Ohjelman rakenne noudattaa kolmitasoista kerrosarkkitehtuuria, jonka koodin pakkausrakenne on seuraava:
 
 # Sovelluslogiikka
 Sovelluksen loogisen datamallin muodostavat luokat User ja Note, jotka kuvaavat käyttäjiä ja käyttäjien muistiinpanoja:
