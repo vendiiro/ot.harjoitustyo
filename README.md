@@ -14,6 +14,10 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
 [tuntikirjanpito.md](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
  # Komentorivikomennot
+ **Svelluksen ajaminen komentoriviltä**
+ - Voit suorittaa sovelluksen ajamisen komennolla 
+    - mvn compile exec:java -Dexec.mainClass=paivakirja.Main
+ 
 **Testaus**
 - suorita testit komennolla
     - mvn test
