@@ -7,4 +7,4 @@ PVM | Aika | Mitä tuli tehtyä
 28.3| 2h | työn suunnittelua ja testausta
 30.3| 3h | perehdyin daoon ja tutustuinsyksyn tikapeen
 31.3| 8h | työn kanssa tappelua komentorivillä ja testit
-
+6.4| 6h | lisää testejä ja muita huomiota
