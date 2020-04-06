@@ -16,7 +16,7 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
  # Komentorivikomennot
 **Testaus**
 - suorita testit komennolla
-mvn test
+    - mvn test
 - suorita testikattavuus raportti komennolla 
-mvn jacoco:report
+     - mvn jacoco:report
 
