@@ -14,4 +14,9 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
 [tuntikirjanpito.md](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
  # Komentorivikomennot
+**Testaus**
+-suorita testit komennolla
+mvn test
+-suorita testikattavuus raportti komennolla 
+mvn jacoco:report
 
