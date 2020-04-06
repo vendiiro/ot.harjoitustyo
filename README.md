@@ -13,6 +13,8 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
 
 [tuntikirjanpito.md](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
+[arkkitehtuuri.md](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/arkkitehtuurikuvaus.md)
+
  # Komentorivikomennot
  **Svelluksen ajaminen komentoriviltä**
  - Voit suorittaa sovelluksen ajamisen komennolla 
