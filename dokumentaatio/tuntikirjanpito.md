@@ -1,4 +1,4 @@
-__Käytetyt tunnit sovelluksen parissa__
+# Käytetyt tunnit sovelluksen parissa
 
 PVM | Aika | Mitä tuli tehtyä
 ----|------|-----------------
