@@ -25,4 +25,10 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
     - mvn test
 - suorita testikattavuus raportti komennolla 
      - mvn jacoco:report
+- Raportti löytyy kansiosta 
+     - target/site/jacoco/index.html 
+- Checkstyle-raportin voi luoda komennolla
+     - mvn jxr:jxr checkstyle:checkstyle
+- Raportti löytyy kansiosta
+     - target/site/checkstyle.html
 
