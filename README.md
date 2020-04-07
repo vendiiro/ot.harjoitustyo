@@ -28,7 +28,7 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
 - Raportti löytyy kansiosta 
      - target/site/jacoco/index.html 
 - Checkstyle-raportin voi luoda komennolla
-     - mvn jxr:jxr checkstyle:checkstyle
+     - mvn jxr:jxr checkstyle:checkstyle, tosin tätä en oikein saanut toimimaan vaikka on omasta milestä aika oikean näköinen.
 - Raportti löytyy kansiosta
-     - target/site/checkstyle.html
+     - target/site/checkstyle.html, jos sen olisi saaatu tehtyä
 
