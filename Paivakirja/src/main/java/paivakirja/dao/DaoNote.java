@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package paivakirja.dao;
 
-import domain.Note;
-import domain.User;
+import paivakirja.domain.Note;
+import paivakirja.domain.User;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;

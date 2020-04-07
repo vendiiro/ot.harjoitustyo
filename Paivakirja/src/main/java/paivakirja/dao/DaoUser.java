@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package paivakirja.dao;
 
-import domain.User;
+import paivakirja.domain.User;
 import java.sql.SQLException;
 
 /**

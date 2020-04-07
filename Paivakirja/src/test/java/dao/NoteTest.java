@@ -6,8 +6,8 @@ package dao;
  * and open the template in the editor.
  */
 
-import domain.Note;
-import domain.User;
+import paivakirja.domain.Note;
+import paivakirja.domain.User;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import org.junit.After;

@@ -1,6 +1,6 @@
-package ui;
+package paivakirja.ui;
 
-import domain.NoteService;
+import paivakirja.domain.NoteService;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.Scanner;

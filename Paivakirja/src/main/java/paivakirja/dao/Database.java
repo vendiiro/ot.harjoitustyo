@@ -1,4 +1,4 @@
-package dao;
+package paivakirja.dao;
 
 import java.sql.*;
 

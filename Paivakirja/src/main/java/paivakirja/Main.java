@@ -6,7 +6,7 @@
 package paivakirja;
 
 import java.util.Scanner;
-import ui.UiText;
+import paivakirja.ui.UiText;
 
 public class Main {
 

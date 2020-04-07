@@ -1,7 +1,10 @@
 
 package dao;
 
-import domain.User;
+import paivakirja.dao.DaoUser;
+import paivakirja.dao.Database;
+import paivakirja.dao.UserSql;
+import paivakirja.domain.User;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
