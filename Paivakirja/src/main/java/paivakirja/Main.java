@@ -9,9 +9,10 @@ import java.util.Scanner;
 import ui.UiText;
 
 public class Main {
-        public static void main(String[] args) throws Exception {
-    Scanner scanner = new Scanner(System.in);
-    UiText ui = new UiText(scanner);
-    ui.start();
-}
+
+    public static void main(String[] args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        UiText ui = new UiText(scanner);
+        ui.start();
+    }
 }
