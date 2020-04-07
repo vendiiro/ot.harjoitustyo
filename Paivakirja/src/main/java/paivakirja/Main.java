@@ -5,12 +5,13 @@
  */
 package paivakirja;
 
+import java.util.Scanner;
 import ui.UiText;
 
 public class Main {
         public static void main(String[] args) throws Exception {
-    
-    UiText ui = new UiText();
+    Scanner scanner = new Scanner(System.in);
+    UiText ui = new UiText(scanner);
     ui.start();
 }
 }

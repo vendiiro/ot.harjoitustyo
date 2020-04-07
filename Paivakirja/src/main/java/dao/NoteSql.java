@@ -28,14 +28,51 @@ public class NoteSql implements DaoNote{
     }
         
         @Override
-    public Note create(LocalDate date, int min, String content, User user) throws SQLException {
-                         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Note create(LocalDate date, int lenght, String content, User user) throws SQLException {
+        
+        Connection conn = database.getConnection();
+            
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Note (date, min, content, user) VALUES (?,?,?,?)");
+        stmt.setDate(1, Date.valueOf(date));
+        stmt.setInt(2, lenght);
+        stmt.setString(3, content);           
+        stmt.setInt(4, user.getId()); 
 
+        stmt.executeUpdate();
+
+        stmt.close();
+        conn.close();
+
+        return getUserWithDate(user, date);            
+    
     }
     
     public Note getUserWithDate(User user, LocalDate date) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-           
+  String username = user.getUsername();        
+        
+        Connection conn = database.getConnection();
+            
+        PreparedStatement stmnt = conn.prepareStatement("SELECT * FROM Note, User WHERE User.username = ? AND Note.date = ?");
+        stmnt.setString(1, username);
+        stmnt.setDate(2, Date.valueOf(date));
+
+        ResultSet rs = stmnt.executeQuery();
+        boolean hasOne = rs.next();
+        if (!hasOne) {
+            rs.close();
+            stmnt.close();
+            conn.close();
+            return null;
+        }
+
+        Note note = new Note(rs.getDate("date").toLocalDate(), rs.getInt("min"), rs.getString("content"), user, rs.getInt("id"));
+
+        rs.close();
+        stmnt.close();
+        conn.close();
+
+        return note;        
+               
     }
 
     @Override
@@ -45,8 +82,26 @@ public class NoteSql implements DaoNote{
 
     @Override
     public int totalTimeWasted(User user) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+int userId = user.getId();
+        int tulos = 0;
+        
+        Connection conn = database.getConnection();
+            
+        PreparedStatement stmt = conn.prepareStatement("SELECT SUM(min) FROM Note WHERE user = ?");
+        stmt.setInt(1, userId);
+
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            tulos = rs.getInt(1);
+        }
+
+        rs.close();
+        stmt.close();
+        conn.close();
+        
+        return tulos;
+        }
 
     @Override
     public boolean deleteNote(LocalDate date, User user) throws SQLException {

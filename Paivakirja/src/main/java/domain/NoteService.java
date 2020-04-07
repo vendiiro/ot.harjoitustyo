@@ -59,11 +59,9 @@ public class NoteService {
     }
 
     public boolean isUserLoggedIn() {
-        if (existingUser == null) {
-            return false;
-        }
-        return true;
+        return existingUser != null;
     }
+    
     
     public boolean createUser(String name, String username) throws SQLException {
         if (daoUser.getUsingUsername(username) != null) {

@@ -12,7 +12,8 @@ public class UiText {
     private Map<String, String> commands;
     private NoteService noteService;
 
-    public UiText() throws Exception {
+    public UiText(Scanner reader) throws Exception {
+        this.reader = reader;
         this.commands = createInstructions();
     }
 
@@ -47,7 +48,7 @@ public class UiText {
                     System.out.println("logout");
                     break;
                 } else if (command.equals("1")) {
-                    System.out.println("create user");
+                    createUser();
                 } else if (command.equals("2")) {
                     System.out.println("login");
                 } else if (command.equals("3")) {
@@ -57,7 +58,7 @@ public class UiText {
                 } else if (command.equals("5")) {
                     System.out.println("get all notes");
                 } else if (command.equals("6")) {
-                    System.out.println("get all notes");
+                    System.out.println("delete your one of your notes");
                 }
             }
         } catch (Exception e) {
@@ -82,22 +83,22 @@ public class UiText {
         while (name == null) {
             System.out.println("Name: ");
             name = reader.nextLine();
-            name = validateNameAndUsername(name);
+            name = rulesOfNameAndUsername(name);
         }
         String username = null;
         while (username == null) {
             System.out.println("Username: ");
             username = reader.nextLine();
-            username = validateNameAndUsername(username);
+            username = rulesOfNameAndUsername(username);
         }
 
         if (noteService.createUser(name, username) == false) {
-            System.out.println("The username is already taken. Select a unique username!");
+            System.out.println("The username is already taken. Select different username!");
         } else {
-            System.out.println("You have now been registered. Select login (1) to continue.");
+            System.out.println("You have succesfully created new user. Select two to login and continue.");
         }
     }
-    public String validateNameAndUsername(String input) {
+    public String rulesOfNameAndUsername(String input) {
         String trimnames = input.trim();
         if (trimnames.length() == 0 || trimnames.length() < 2|| trimnames.length() > 30) {
             System.out.println("Name and username must be between 2 and 30 characters in length!");
