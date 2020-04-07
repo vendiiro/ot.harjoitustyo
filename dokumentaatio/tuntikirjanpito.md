@@ -9,4 +9,5 @@ PVM | Aika | Mitä tuli tehtyä
 31.3| 8h | työn kanssa tappelua komentorivillä ja testit
 6.4| 6h | lisää testejä ja muita huomiota
 7.4| 2h | pakkauskaavioiden tekoa
-yhteensä| 25h | hyvin saa kulumaan aikaa
+7.4| 4h | xml tiedostojen kanssa taistelua
+yhteensä| 31h | hyvin saa kulumaan aikaa
