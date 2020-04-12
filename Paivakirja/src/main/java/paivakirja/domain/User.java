@@ -3,7 +3,7 @@ package paivakirja.domain;
 import java.util.Objects;
 
 /**
- * Järjestelmän käyttäjää edustava luokka
+ * Järjestelmän käyttäjää edustava luokka.
  */
 
 public class User {

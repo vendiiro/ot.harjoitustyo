@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 /**
- * Yksittäistä työtä kuvaava luokka
+ * Yksittäistä muistiinpanoa kuvaava luokka.
  */
 
 public class Note {
