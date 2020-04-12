@@ -14,7 +14,7 @@ public class Database {
         return DriverManager.getConnection(database);
     }
 
-    public void creatingTables() throws SQLException {
+    public void createTable() throws SQLException {
         String userTables = "CREATE TABLE IF NOT EXISTS User (\n"
                 + "id integer PRIMARY KEY,\n"
                 + "name text NOT NULL,\n"

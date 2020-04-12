@@ -30,7 +30,7 @@ public class UserSqlTest {
     @Before
     public void setup() throws Exception {
         database = new Database("jdbc:sqlite:test-tietokanta.db");
-        database.creatingTables();
+        database.createTable();
         
         this.daoUser = new UserSql(database) ;
         this.user = this.daoUser.create("Big Rammy", "bigR");      
