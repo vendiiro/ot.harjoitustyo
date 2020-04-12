@@ -10,63 +10,64 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Note {
+
     private LocalDate date;
     private int length;
     private String content;
     private User user;
     private int id;
- 
+
     public Note(LocalDate date, int length, String content, User user, int id) {
-        
+
         this.date = date;
         this.length = length;
         this.content = content;
         this.user = user;
         this.id = id;
-    }  
-    
+    }
+
     public LocalDate getDate() {
         return this.date;
     }
-   
-    public void setMinutes(int length){
+
+    public void setMinutes(int length) {
         this.length = length;
     }
-  
+
     public int getMinutes() {
         return this.length;
     }
 
-    public void setContent (String content){
-        this.content=content;
+    public void setContent(String content) {
+        this.content = content;
     }
-    
+
     public String getContent() {
         return this.content;
     }
-   
-    public void setUser(User user){
-        this.user=user;
+
+    public void setUser(User user) {
+        this.user = user;
     }
-    
+
     public User getUser() {
         return this.user;
     }
-    
-    public void setId (int id) {
-    this.id=id;
-}
-    
-     public int getId() {
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
         return this.id;
     }
-    
+
     @Override
     public String toString() {
         DateTimeFormatter DTF = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        
-        return "Date: " + this.date.format(DTF) + "\n" + "Length of the training session: " + 
-                this.length + "\n" + "Your notes from this session: " + this.content;
+
+        return "Date: " + this.date.format(DTF) + "\n" + "Length of the training session: "
+                + this.length + "\n" + "Your notes from this session: " + this.content;
     }
 
     @Override
@@ -82,34 +83,11 @@ public class Note {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
+        if (!(obj instanceof Note)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Note other = (Note) obj;
-        if (this.length != other.length) {
-            return false;
-        }
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.content, other.content)) {
-            return false;
-        }
-        if (!Objects.equals(this.date, other.date)) {
-            return false;
-        }
-        if (!Objects.equals(this.user, other.user)) {
-            return false;
-        }
-        return true;
+        Note other = (Note) obj;
+        return id == other.id;
     }
-   
-    
-    
+
 }

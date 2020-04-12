@@ -48,7 +48,7 @@ public class NoteService {
         daoNote.create(date, min, content, existingUser);
         return true;
     }
-    
+
     public boolean login(String username) throws SQLException {
         User user = daoUser.getUsingUsername(username);
         if (user == null) {
@@ -61,8 +61,7 @@ public class NoteService {
     public boolean isUserLoggedIn() {
         return existingUser != null;
     }
-    
-    
+
     public boolean createUser(String name, String username) throws SQLException {
         if (daoUser.getUsingUsername(username) != null) {
             return false;

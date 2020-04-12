@@ -19,39 +19,39 @@ import java.util.List;
  *
  * @author iiro
  */
-public class NoteSql implements DaoNote{
-    
-        private final Database database;
-        
-         public NoteSql(Database database) {
+public class NoteSql implements DaoNote {
+
+    private final Database database;
+
+    public NoteSql(Database database) {
         this.database = database;
     }
-        
-        @Override
+
+    @Override
     public Note create(LocalDate date, int lenght, String content, User user) throws SQLException {
-        
+
         Connection conn = database.getConnection();
-            
+
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO Note (date, min, content, user) VALUES (?,?,?,?)");
         stmt.setDate(1, Date.valueOf(date));
         stmt.setInt(2, lenght);
-        stmt.setString(3, content);           
-        stmt.setInt(4, user.getId()); 
+        stmt.setString(3, content);
+        stmt.setInt(4, user.getId());
 
         stmt.executeUpdate();
 
         stmt.close();
         conn.close();
 
-        return getUserWithDate(user, date);            
-    
+        return getUserWithDate(user, date);
+
     }
-    
+
     public Note getUserWithDate(User user, LocalDate date) throws SQLException {
-  String username = user.getUsername();        
-        
+        String username = user.getUsername();
+
         Connection conn = database.getConnection();
-            
+
         PreparedStatement stmnt = conn.prepareStatement("SELECT * FROM Note, User WHERE User.username = ? AND Note.date = ?");
         stmnt.setString(1, username);
         stmnt.setDate(2, Date.valueOf(date));
@@ -71,8 +71,8 @@ public class NoteSql implements DaoNote{
         stmnt.close();
         conn.close();
 
-        return note;        
-               
+        return note;
+
     }
 
     @Override
@@ -82,11 +82,11 @@ public class NoteSql implements DaoNote{
 
     @Override
     public int totalTimeWasted(User user) throws SQLException {
-int userId = user.getId();
+        int userId = user.getId();
         int tulos = 0;
-        
+
         Connection conn = database.getConnection();
-            
+
         PreparedStatement stmt = conn.prepareStatement("SELECT SUM(min) FROM Note WHERE user = ?");
         stmt.setInt(1, userId);
 
@@ -99,9 +99,9 @@ int userId = user.getId();
         rs.close();
         stmt.close();
         conn.close();
-        
+
         return tulos;
-        }
+    }
 
     @Override
     public boolean deleteNote(LocalDate date, User user) throws SQLException {
