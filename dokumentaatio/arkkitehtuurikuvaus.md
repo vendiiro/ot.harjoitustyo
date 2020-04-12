@@ -4,7 +4,7 @@
 
 Ohjelman rakenne noudattaa kolmitasoista kerrosarkkitehtuuria, jonka koodin pakkausrakenne on seuraava:
 
-![Image of Yaktocat](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/Untitled%20Diagram.png)
+![Image of Yaktocat](https://raw.githubusercontent.com/vendiiro/ot.harjoitustyo/master/dokumentaatio/kuvat/Untitled%20Diagram.png)
 
 
 
