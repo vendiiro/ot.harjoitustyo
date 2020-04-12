@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paivakirja.dao;
 
 import paivakirja.domain.User;
@@ -19,10 +14,24 @@ public class UserSql implements DaoUser {
 
     private Database database;
 
+    /**
+     *
+     * @param database
+     */
+
     public UserSql(Database database) {
         this.database = database;
     }
 
+    /**
+     *
+     * @param name
+     * @param username
+     * @return
+     * @throws SQLException
+     */
+
+    @Override
     public User create(String name, String username) throws SQLException {
         Connection conn = database.getConnection();
 
@@ -39,6 +48,13 @@ public class UserSql implements DaoUser {
         return getUsingUsername(username);
     }
 
+    /**
+     *
+     * @param username
+     * @return
+     * @throws SQLException
+     */
+    @Override
     public User getUsingUsername(String username) throws SQLException {
         Connection conn = database.getConnection();
 

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paivakirja.domain;
 
 import java.time.LocalDate;
@@ -17,6 +12,15 @@ public class Note {
     private User user;
     private int id;
 
+    /**
+     * Konstruktori.
+     *
+     * @param date
+     * @param length
+     * @param content
+     * @param user
+     * @param id
+     */
     public Note(LocalDate date, int length, String content, User user, int id) {
 
         this.date = date;
@@ -64,9 +68,9 @@ public class Note {
 
     @Override
     public String toString() {
-        DateTimeFormatter DTF = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        return "Date: " + this.date.format(DTF) + "\n" + "Length of the training session: "
+        return "Date: " + this.date.format(format) + "\n" + "Length of the training session: "
                 + this.length + "\n" + "Your notes from this session: " + this.content;
     }
 

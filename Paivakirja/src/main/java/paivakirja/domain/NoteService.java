@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paivakirja.domain;
 
 import paivakirja.dao.DaoNote;
@@ -10,10 +5,9 @@ import paivakirja.dao.DaoUser;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
-
+import java.util.Date;
 /**
- *
- * @author iiro
+ * Sovelluslogiikasta vastaava luokka.
  */
 public class NoteService {
 
@@ -21,11 +15,24 @@ public class NoteService {
     private DaoUser daoUser;
     private User existingUser;
 
+    /**
+     * Konstruktori.
+     *
+     * @param daoNote Käyttäjän muistiinpanojen käsittely
+     * @param daoUser Käyttäjän tietojen käsittely
+     */
     public NoteService(DaoNote daoNote, DaoUser daoUser) {
         this.daoNote = daoNote;
         this.daoUser = daoUser;
     }
 
+    /**
+     * Metodi poistaa nykyisen käyttäjän muistiinpanon annetulla pvm.
+     *
+     * @param date Nykyisen käyttäjän antama päivämäärä
+     * @return
+     * @throws java.sql.SQLException
+     */
     public boolean deleteNote(LocalDate date) throws SQLException {
         List<Note> list = daoNote.getAll(existingUser);
         boolean result = false;
@@ -40,15 +47,47 @@ public class NoteService {
         return result;
     }
 
+    /**
+     * Metodi palauttaa nykyisen käyttäjän kaikki muistiinpanot.
+     *
+     * @return
+     * @throws java.sql.SQLException
+     */
     public List<Note> getAll() throws SQLException {
         return daoNote.getAll(existingUser);
     }
-
+     /**
+     * Metodi palauttaa summan treeneihin kuluneesta ajasta.
+     * 
+     * @return 
+     * @throws java.sql.SQLException
+     */
+    public int totalTimeWasted ()throws SQLException {
+        return daoNote.totalTimeWasted(existingUser);
+    }
+    /**
+     * Metodi luo uuden muistiinpanon nykyiselle käyttäjälle.
+     *
+     * @param date Muistiinpanon päivämäärä
+     * @param min Kuinka monta kilometria muistiinpanoon liittyy
+     * @param content Teksti, joka halutaan liittää osaksi muistiinpanoa
+     * @return
+     * @throws java.sql.SQLException
+     *
+     */
     public boolean createNote(LocalDate date, int min, String content) throws SQLException {
         daoNote.create(date, min, content, existingUser);
         return true;
     }
 
+    /**
+     * Käyttäjä jolla on jo käyttäjätunnus, voi kirjautua sisään.
+     *
+     * @param username Käyttäjänimi
+     * @return
+     * @throws java.sql.SQLException
+     *
+     */
     public boolean login(String username) throws SQLException {
         User user = daoUser.getUsingUsername(username);
         if (user == null) {
@@ -58,10 +97,40 @@ public class NoteService {
         return true;
     }
 
+    /**
+     * Metodi palauttaa nykyisen käyttäjän.
+     *
+     * @return
+     */
+    public User getLoggedUser() {
+        return existingUser;
+    }
+
+    /**
+     * Metodi kertoo onko käyttäjä kirjautuneena sisään.
+     *
+     * @return *
+     */
     public boolean isUserLoggedIn() {
         return existingUser != null;
     }
 
+    /**
+     * Metodi kirjaa ulos nykyisen käyttäjän.
+     */
+    public void logout() {
+        existingUser = null;
+    }
+
+    /**
+     * Metodi luo uuden käyttäjän.
+     *
+     * @param name Käyttäjän nimi
+     * @param username Käyttäjän käyttäjänimi
+     * @return
+     * @throws java.sql.SQLException
+     *
+     */
     public boolean createUser(String name, String username) throws SQLException {
         if (daoUser.getUsingUsername(username) != null) {
             return false;

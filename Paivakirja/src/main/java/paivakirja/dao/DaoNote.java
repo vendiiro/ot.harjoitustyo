@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paivakirja.dao;
 
 import paivakirja.domain.Note;
@@ -11,13 +6,50 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface DaoNote{
+/**
+ * Rajapinnta luokka
+ */
+public interface DaoNote {
+
+    /**
+     * Metodi luo muistiinpanon, joka vastaa parametreina saatuja tietoja.
+     *
+     * @param date
+     * @param min
+     * @param content
+     * @param user
+     * @return
+     * @throws java.sql.SQLException
+     */
     Note create(LocalDate date, int min, String content, User user) throws SQLException;
-     
+
+    /**
+     * Metodi palauttaa kaikki käyttäjän tekemät muistiinpanot.
+     *
+     * @param user
+     * @return
+     * @throws java.sql.SQLException
+     */
     List<Note> getAll(User user) throws SQLException;
-  
+
+    /**
+     * Metodi kertoo summan käyttäjän treeneihin kuluneesta ajasta.
+     *
+     * @param user
+     * @return
+     * @throws java.sql.SQLException
+     */
     int totalTimeWasted(User user) throws SQLException;
-    
+
+    /**
+     * Metodi poistaa muistiinpanon halutulta pvm.
+     *
+     * @param date
+     * @param user
+     * @return
+     * @throws java.sql.SQLException
+     */
+
     boolean deleteNote(LocalDate date, User user) throws SQLException;
-    
+
 }

@@ -1,21 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paivakirja.domain;
 
 import java.util.Objects;
 
 /**
- *
- * @author iiro
+ * The class represents the user.
  */
 public class User {
 
     private String name;
     private String username;
     private int id;
+
+    /**
+     * Konstruktori.
+     *
+     * @param name Users real name
+     * @param username Created username
+     * @param id The users id
+     */
 
     public User(String name, String username, int id) {
         this.name = name;
@@ -62,10 +64,7 @@ public class User {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.username, other.username)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.username, other.username);
     }
 
 }
