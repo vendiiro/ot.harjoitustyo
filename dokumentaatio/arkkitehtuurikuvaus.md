@@ -14,4 +14,4 @@ Sovelluksen loogisen datamallin muodostavat luokat User ja Note, jotka kuvaavat 
 ![Image of Yaktocat](https://yuml.me/e220d1f7.png)
 
 NoteServicen ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
-![Image of Yaktocat](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/pakkauskaavio.png)
+![Image of Yaktocat](https://raw.githubusercontent.com/vendiiro/ot.harjoitustyo/master/dokumentaatio/kuvat/pakkauskaavio.png)
