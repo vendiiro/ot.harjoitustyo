@@ -14,23 +14,10 @@ public class NoteSql implements DaoNote {
 
     private final Database database;
 
-    /**
-     *
-     * @param database
-     */
     public NoteSql(Database database) {
         this.database = database;
     }
 
-    /**
-     *
-     * @param date
-     * @param lenght
-     * @param content
-     * @param user
-     * @return
-     * @throws SQLException
-     */
     @Override
     public Note create(LocalDate date, int lenght, String content, User user) throws SQLException {
 
@@ -51,13 +38,6 @@ public class NoteSql implements DaoNote {
 
     }
 
-    /**
-     *
-     * @param user
-     * @param date
-     * @return
-     * @throws SQLException
-     */
     public Note getUserWithDate(User user, LocalDate date) throws SQLException {
         String username = user.getUsername();
 
@@ -97,12 +77,6 @@ public class NoteSql implements DaoNote {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     *
-     * @param user
-     * @return
-     * @throws SQLException
-     */
     @Override
     public int totalTimeWasted(User user) throws SQLException {
         int userId = user.getId();
@@ -126,13 +100,6 @@ public class NoteSql implements DaoNote {
         return tulos;
     }
 
-    /**
-     *
-     * @param date
-     * @param user
-     * @return
-     * @throws SQLException
-     */
     @Override
     public boolean deleteNote(LocalDate date, User user) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

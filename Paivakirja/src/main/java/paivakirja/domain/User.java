@@ -3,21 +3,14 @@ package paivakirja.domain;
 import java.util.Objects;
 
 /**
- * The class represents the user.
+ * Järjestelmän käyttäjää edustava luokka
  */
+
 public class User {
 
     private String name;
     private String username;
     private int id;
-
-    /**
-     * Konstruktori.
-     *
-     * @param name Users real name
-     * @param username Created username
-     * @param id The users id
-     */
 
     public User(String name, String username, int id) {
         this.name = name;

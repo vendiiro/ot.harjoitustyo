@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+/**
+ * Yksittäistä työtä kuvaava luokka
+ */
+
 public class Note {
 
     private LocalDate date;
@@ -12,15 +16,6 @@ public class Note {
     private User user;
     private int id;
 
-    /**
-     * Konstruktori.
-     *
-     * @param date
-     * @param length
-     * @param content
-     * @param user
-     * @param id
-     */
     public Note(LocalDate date, int length, String content, User user, int id) {
 
         this.date = date;

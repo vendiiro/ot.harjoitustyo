@@ -6,30 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- *
- * @author iiro
- */
 public class UserSql implements DaoUser {
 
     private Database database;
 
-    /**
-     *
-     * @param database
-     */
-
     public UserSql(Database database) {
         this.database = database;
     }
-
-    /**
-     *
-     * @param name
-     * @param username
-     * @return
-     * @throws SQLException
-     */
 
     @Override
     public User create(String name, String username) throws SQLException {
@@ -48,12 +31,6 @@ public class UserSql implements DaoUser {
         return getUsingUsername(username);
     }
 
-    /**
-     *
-     * @param username
-     * @return
-     * @throws SQLException
-     */
     @Override
     public User getUsingUsername(String username) throws SQLException {
         Connection conn = database.getConnection();
