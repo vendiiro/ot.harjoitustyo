@@ -37,6 +37,7 @@ Tiedostoon [checkstyle.xml] määrittelemät tarkistukset suoritetaan komennolla
 
 **Suoritettavan jarin generointi**
 
-Komento 
+- Komento 
  - mvn package
+ 
 generoi hakemistoon target suoritettavan jar-tiedoston OtmTodoApp-1.0-SNAPSHOT.jar
