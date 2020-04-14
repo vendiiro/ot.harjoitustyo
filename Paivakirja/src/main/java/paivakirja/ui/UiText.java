@@ -1,10 +1,17 @@
 package paivakirja.ui;
 
+import java.io.FileInputStream;
 import paivakirja.domain.NoteService;
 import java.sql.SQLException;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Scanner;
 import java.util.TreeMap;
+import paivakirja.dao.DaoNote;
+import paivakirja.dao.DaoUser;
+import paivakirja.dao.Database;
+import paivakirja.dao.NoteSql;
+import paivakirja.dao.UserSql;
 
 public class UiText {
 
@@ -12,8 +19,7 @@ public class UiText {
     private Map<String, String> commands;
     private NoteService noteService;
 
-    public UiText(Scanner reader) throws Exception {
-        this.reader = reader;
+    public UiText() throws Exception {
         this.commands = createInstructions();
     }
 
@@ -35,6 +41,7 @@ public class UiText {
         System.out.println("**Why r u not working on tira**");
         printInstructions();
         try {
+            OUTER:
             while (true) {
                 System.out.println();
                 System.out.println("Command: ");
@@ -44,24 +51,34 @@ public class UiText {
                     System.out.println("Command was not recognized.");
                     printInstructions();
                 }
-                if (command.equals("x")) {
-                    System.out.println("logout");
-                    break;
-                } else if (command.equals("1")) {
-                    createUser();
-                } else if (command.equals("2")) {
-                    System.out.println("login");
-                } else if (command.equals("3")) {
-                    System.out.println("create note");
-                } else if (command.equals("4")) {
-                    System.out.println("time wasted while training");
-                } else if (command.equals("5")) {
-                    System.out.println("get all notes");
-                } else if (command.equals("6")) {
-                    System.out.println("delete your one of your notes");
+                switch (command) {
+                    case "x":
+                        logout();
+                        System.out.println("U r now logged out and should wor on tira");
+                        break OUTER;
+                    case "1":
+                        createUser();
+                        break;
+                    case "2":
+                        login();
+                        break;
+                    case "3":
+                        System.out.println("create note");
+                        break;
+                    case "4":
+                        System.out.println("time wasted while training");
+                        break;
+                    case "5":
+                        System.out.println("get all notes");
+                        break;
+                    case "6":
+                        System.out.println("delete one of your notes");
+                        break;
+                    default:
+                        break;
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Well that didn't go as planned. Sorry but the program is closed. While we work on that U work on tira!!!!");
 
         }
@@ -98,14 +115,59 @@ public class UiText {
             System.out.println("You have succesfully created new user. Select two to login and continue.");
         }
     }
+
     public String rulesOfNameAndUsername(String input) {
         String trimnames = input.trim();
-        if (trimnames.length() == 0 || trimnames.length() < 2|| trimnames.length() > 30) {
+        if (trimnames.length() == 0 || trimnames.length() < 2 || trimnames.length() > 30) {
             System.out.println("Name and username must be between 2 and 30 characters in length!");
             trimnames = null;
         }
         return trimnames;
     }
-    
 
+    private void logout() {
+        if (noteService.isUserLoggedIn() == true) {
+            noteService.logout();
+            System.out.println("U R now logged out of the app and should work on tira");
+        } else {
+            System.out.println("The program has been closed.");
+        }
+    }
+
+    private void login() throws SQLException {
+        if (noteService.isUserLoggedIn() == true) {
+            System.out.println("Username '" + noteService.getLoggedUser().getUsername() + "' is already logged in.");
+            return;
+        }
+        System.out.println("Username: ");
+        String username = reader.nextLine();
+
+        if (noteService.login(username) == false) {
+            System.out.println("No such username. You need to register as a new user first!");
+        }
+
+    }
+
+    public static void main(String[] args) throws Exception {
+        UiText ui = new UiText();
+        ui.init();
+    }
+
+    private void init() throws Exception {
+        Properties properties = new Properties();
+        properties.load(new FileInputStream("config.properties"));
+
+        String adress = properties.getProperty("Address");
+        Database db = new Database(adress);
+        db.creatingTables();
+        DaoUser userDao = new UserSql(db);
+        DaoNote noteDao = new NoteSql(db);
+        NoteService nc = new NoteService(noteDao, userDao);
+
+        Scanner sanner = new Scanner(System.in);
+
+        this.reader = sanner;
+        this.noteService = nc;
+        start();
+    }
 }

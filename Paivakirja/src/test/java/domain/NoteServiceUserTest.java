@@ -5,12 +5,17 @@
  */
 package domain;
 
+import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import paivakirja.dao.DaoNote;
+import paivakirja.dao.DaoUser;
+import paivakirja.domain.NoteService;
+
 
 /**
  *
@@ -18,28 +23,17 @@ import static org.junit.Assert.*;
  */
 public class NoteServiceUserTest {
     
-    public NoteServiceUserTest() {
+    DaoNote daoNote;
+    
+    DaoUser daoUser;
+    
+    NoteService noteService;
+    
+     @Before
+    public void setup() {
+        this.noteService = new NoteService(daoNote, daoUser);
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
     
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }

@@ -30,7 +30,7 @@ public class UserSqlTest {
     @Before
     public void setup() throws Exception {
         database = new Database("jdbc:sqlite:test-tietokanta.db");
-        database.createTable();
+        database.creatingTables();
         
         this.daoUser = new UserSql(database) ;
         this.user = this.daoUser.create("Big Rammy", "bigR");      
@@ -43,27 +43,27 @@ public class UserSqlTest {
     
     @Test
     public void existingUserIsFound() throws SQLException{
-        User user = daoUser.getUsingUsername("bigR");
+        User usr = daoUser.getUsingUsername("bigR");
         
-        assertEquals("Big Rammy", user.getName());
-        assertEquals("bigR", user.getUsername());   
+        assertEquals("Big Rammy", usr.getName());
+        assertEquals("bigR", usr.getUsername());   
     }
     
     @Test
     public void nonExistingUserIsFound() throws SQLException{
-        User user = daoUser.getUsingUsername("salisiima");
+        User usr = daoUser.getUsingUsername("salisiima");
         
-        assertEquals(null, user);
+        assertEquals(null, usr);
     }
     
     @Test 
     public void newUserIsFound() throws SQLException {
         daoUser.create("Chris Bumstaid", "cbum");
         
-        User user = daoUser.getUsingUsername("cbum");
+        User usr = daoUser.getUsingUsername("cbum");
         
-        assertEquals("Chris Bumstaid", user.getName());
-        assertEquals("cbum", user.getUsername());
+        assertEquals("Chris Bumstaid", usr.getName());
+        assertEquals("cbum", usr.getUsername());
     }
     
 }

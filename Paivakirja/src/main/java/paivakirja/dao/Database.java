@@ -14,21 +14,14 @@ public class Database {
         return DriverManager.getConnection(database);
     }
 
-    public void createTable() throws SQLException {
-        String userTables = "CREATE TABLE IF NOT EXISTS User (\n"
-                + "id integer PRIMARY KEY,\n"
-                + "name text NOT NULL,\n"
-                + "username text NOT NULL\n"
-                + ");";
+    public void creatingTables() throws SQLException {
+        String userTables = "CREATE TABLE IF NOT EXISTS User (\n" + "id integer PRIMARY KEY,\n"
+                + "name text NOT NULL,\n" + "username text NOT NULL\n" + ");";
 
         String noteTable = "CREATE TABLE IF NOT EXISTS Note (\n"
-                + "id integer PRIMARY KEY,\n"
-                + "date date NOT NULL,\n"
-                + "min integer NOT NULL,\n"
-                + "content text NOT NULL,\n"
-                + "user integer NOT NULL,\n"
-                + "FOREIGN KEY(user) REFERENCES User(id)\n"
-                + ");";
+                + "id integer PRIMARY KEY,\n" + "date date NOT NULL,\n" + "min integer NOT NULL,\n"
+                + "content text NOT NULL,\n" + "user integer NOT NULL,\n"
+                + "FOREIGN KEY(user) REFERENCES User(id)\n" + ");";
 
         try (Connection con = getConnection()) {
             Statement stmnt = con.createStatement();

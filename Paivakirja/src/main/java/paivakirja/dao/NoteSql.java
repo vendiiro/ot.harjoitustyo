@@ -66,12 +66,6 @@ public class NoteSql implements DaoNote {
 
     }
 
-    /**
-     *
-     * @param user
-     * @return
-     * @throws SQLException
-     */
     @Override
     public List<Note> getAll(User user) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
