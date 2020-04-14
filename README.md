@@ -30,7 +30,7 @@ Raportti löytyy kansiosta
      
 **Checkstyle-raportti**
 
-Tiedostoon [checkstyle.xml] määrittelemät tarkistukset suoritetaan komennolla
+Tiedostoon [checkstyle.xml](https://github.com/vendiiro/ot.harjoitustyo/blob/master/Paivakirja/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
  -  mvn jxr:jxr checkstyle:checkstyle
  - Raportti löytyy kansiosta
      - target/site/checkstyle.html
