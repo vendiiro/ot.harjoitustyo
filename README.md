@@ -15,6 +15,10 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
 
 [Arkkitehtuurikuvaus](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/arkkitehtuurikuvaus.md)
 
+[Testausdokumentti](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/testaus.md)
+
+[Käyttöohje](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+
  # Komentorivikomennot
  **Svelluksen ajaminen komentoriviltä**
  - Voit suorittaa sovelluksen ajamisen komennolla 
@@ -23,7 +27,7 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
 **Testaus**
 
 - suorita testit komennolla
-    - mvn test
+   - mvn test
 - suorita testikattavuus raportti komennolla 
      - mvn jacoco:report
      
