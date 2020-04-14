@@ -1,6 +1,6 @@
 # Testausdokumentti
 
-# Yksikkö- ja integraatiotestaus
+## Yksikkö- ja integraatiotestaus
 
 **Sovelluslogiikka**
 
@@ -8,7 +8,7 @@
 
 **Testauskattavuus**
 
-# Järjestelmätestaus
+## Järjestelmätestaus
 
 **Asennus ja konfigurointi**
 
