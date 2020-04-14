@@ -35,3 +35,8 @@ Tiedostoon [checkstyle.xml] määrittelemät tarkistukset suoritetaan komennolla
  - Raportti löytyy kansiosta
      - target/site/checkstyle.html
 
+**Suoritettavan jarin generointi**
+
+Komento 
+ - mvn package
+generoi hakemistoon target suoritettavan jar-tiedoston OtmTodoApp-1.0-SNAPSHOT.jar
