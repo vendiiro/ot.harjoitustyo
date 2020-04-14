@@ -17,7 +17,7 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
 
 [Testausdokumentti](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/testaus.md)
 
-[Käyttöohje]
+[Käyttöohje](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
  # Komentorivikomennot
  **Svelluksen ajaminen komentoriviltä**
