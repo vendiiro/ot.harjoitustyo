@@ -10,4 +10,7 @@ PVM | Aika | Mitä tuli tehtyä
 6.4| 6h | lisää testejä ja muita huomiota
 7.4| 2h | pakkauskaavioiden tekoa
 7.4| 4h | xml tiedostojen kanssa taistelua
-yhteensä| 31h | hyvin saa kulumaan aikaa
+10.4| 3h | checkstylen kanssa leikkimistä
+14.4| 4h | testien lisäämistä ja muita korjauksia
+14.4| 2h | sekvennsien tekoa 
+yhteensä| 40h | hyvin saa kulumaan aikaa
