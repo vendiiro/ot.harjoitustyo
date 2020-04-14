@@ -21,10 +21,12 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
     - mvn compile exec:java -Dexec.mainClass=paivakirja.Main
  
 **Testaus**
+
 - suorita testit komennolla
     - mvn test
 - suorita testikattavuus raportti komennolla 
      - mvn jacoco:report
+     
 Raportti löytyy kansiosta 
      - target/site/jacoco/index.html 
      
