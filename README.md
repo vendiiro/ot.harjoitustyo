@@ -27,6 +27,7 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
      - mvn jacoco:report
 Raportti löytyy kansiosta 
      - target/site/jacoco/index.html 
+     
 **Checkstyle-raportti**
 Tiedostoon [checkstyle.xml] määrittelemät tarkistukset suoritetaan komennolla
  -  mvn jxr:jxr checkstyle:checkstyle
