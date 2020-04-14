@@ -40,4 +40,4 @@ Tiedostoon [checkstyle.xml] määrittelemät tarkistukset suoritetaan komennolla
 - Komento 
    - mvn package
  
-generoi hakemistoon target suoritettavan jar-tiedoston OtmTodoApp-1.0-SNAPSHOT.jar
+generoi hakemistoon target suoritettavan jar-tiedoston Paivakirja-1.0-SNAPSHOT.jar
