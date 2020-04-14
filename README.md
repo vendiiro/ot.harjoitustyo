@@ -21,19 +21,22 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
     - mvn compile exec:java -Dexec.mainClass=paivakirja.Main
  
 **Testaus**
+
 - suorita testit komennolla
     - mvn test
 - suorita testikattavuus raportti komennolla 
      - mvn jacoco:report
+     
 Raportti löytyy kansiosta 
-     - target/site/jacoco/index.html 
+- target/site/jacoco/index.html 
      
 **Checkstyle-raportti**
 
-Tiedostoon [checkstyle.xml] määrittelemät tarkistukset suoritetaan komennolla
+Tiedostoon [checkstyle.xml](https://github.com/vendiiro/ot.harjoitustyo/blob/master/Paivakirja/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
  -  mvn jxr:jxr checkstyle:checkstyle
- - Raportti löytyy kansiosta
-     - target/site/checkstyle.html
+ 
+ Raportti löytyy kansiosta
+  - target/site/checkstyle.html
 
 **Suoritettavan jarin generointi**
 
