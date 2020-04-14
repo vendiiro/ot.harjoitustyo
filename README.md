@@ -15,6 +15,10 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
 
 [Arkkitehtuurikuvaus](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/arkkitehtuurikuvaus.md)
 
+[Testausdokumentti](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/testaus.md)
+
+[Käyttöohje]
+
  # Komentorivikomennot
  **Svelluksen ajaminen komentoriviltä**
  - Voit suorittaa sovelluksen ajamisen komennolla 
