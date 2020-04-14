@@ -28,7 +28,7 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
      - mvn jacoco:report
      
 Raportti löytyy kansiosta 
-     - target/site/jacoco/index.html 
+- target/site/jacoco/index.html 
      
 **Checkstyle-raportti**
 
