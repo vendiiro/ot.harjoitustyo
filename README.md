@@ -29,6 +29,7 @@ Raportti löytyy kansiosta
      - target/site/jacoco/index.html 
      
 **Checkstyle-raportti**
+
 Tiedostoon [checkstyle.xml] määrittelemät tarkistukset suoritetaan komennolla
  -  mvn jxr:jxr checkstyle:checkstyle
  - Raportti löytyy kansiosta
