@@ -36,7 +36,7 @@ Tiedostoon [checkstyle.xml](https://github.com/vendiiro/ot.harjoitustyo/blob/mas
  -  mvn jxr:jxr checkstyle:checkstyle
  
  Raportti löytyy kansiosta
-     - target/site/checkstyle.html
+  - target/site/checkstyle.html
 
 **Suoritettavan jarin generointi**
 
