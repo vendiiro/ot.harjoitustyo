@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class NoteSql implements DaoNote {
@@ -21,18 +22,15 @@ public class NoteSql implements DaoNote {
     @Override
     public Note create(LocalDate date, int lenght, String content, User user) throws SQLException {
 
-        Connection conn = database.getConnection();
-
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Note (date, min, content, user) VALUES (?,?,?,?)");
-        stmt.setDate(1, Date.valueOf(date));
-        stmt.setInt(2, lenght);
-        stmt.setString(3, content);
-        stmt.setInt(4, user.getId());
-
-        stmt.executeUpdate();
-
-        stmt.close();
-        conn.close();
+        try (Connection con = database.getConnection(); PreparedStatement stmnt = con.prepareStatement("INSERT INTO Note (date, min, content, user) VALUES (?,?,?,?)")) {
+            stmnt.setDate(1, Date.valueOf(date));
+            stmnt.setInt(2, lenght);
+            stmnt.setString(3, content);
+            stmnt.setInt(4, user.getId());
+            
+            stmnt.executeUpdate();
+            
+        }
 
         return getUserWithDate(user, date);
 
@@ -41,26 +39,20 @@ public class NoteSql implements DaoNote {
     public Note getUserWithDate(User user, LocalDate date) throws SQLException {
         String username = user.getUsername();
 
-        Connection conn = database.getConnection();
-
-        PreparedStatement stmnt = conn.prepareStatement("SELECT * FROM Note, User WHERE User.username = ? AND Note.date = ?");
-        stmnt.setString(1, username);
-        stmnt.setDate(2, Date.valueOf(date));
-
-        ResultSet rs = stmnt.executeQuery();
-        boolean hasOne = rs.next();
-        if (!hasOne) {
-            rs.close();
-            stmnt.close();
-            conn.close();
-            return null;
+        Note note;
+        try (Connection conn = database.getConnection(); PreparedStatement stmnt = conn.prepareStatement("SELECT * FROM Note, User WHERE User.username = ? AND Note.date = ?")) {
+            stmnt.setString(1, username);
+            stmnt.setDate(2, Date.valueOf(date));
+            try (ResultSet rs = stmnt.executeQuery()) {
+                boolean hasOne = rs.next();
+                if (!hasOne) {
+                    rs.close();
+                    stmnt.close();
+                    conn.close();
+                    return null;
+                }   note = new Note(rs.getDate("date").toLocalDate(), rs.getInt("min"), rs.getString("content"), user, rs.getInt("id"));
+            }
         }
-
-        Note note = new Note(rs.getDate("date").toLocalDate(), rs.getInt("min"), rs.getString("content"), user, rs.getInt("id"));
-
-        rs.close();
-        stmnt.close();
-        conn.close();
 
         return note;
 
@@ -68,7 +60,21 @@ public class NoteSql implements DaoNote {
 
     @Override
     public List<Note> getAll(User user) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Note> list = new ArrayList<>();
+        int userId = user.getId();
+
+        try (Connection con = database.getConnection(); PreparedStatement stmnt = con.prepareStatement("SELECT * FROM Note WHERE user = ? ORDER BY date DESC")) {
+            stmnt.setInt(1, userId);
+            try (ResultSet rs = stmnt.executeQuery()) {
+                while (rs.next()) {
+                    Note n = new Note(rs.getDate("date").toLocalDate(),
+                            rs.getInt("min"), rs.getString("content"), user,
+                            rs.getInt("id"));
+                    list.add(n);
+                }
+            }
+        }
+        return list;
     }
 
     @Override
@@ -76,20 +82,15 @@ public class NoteSql implements DaoNote {
         int userId = user.getId();
         int tulos = 0;
 
-        Connection conn = database.getConnection();
-
-        PreparedStatement stmt = conn.prepareStatement("SELECT SUM(min) FROM Note WHERE user = ?");
-        stmt.setInt(1, userId);
-
-        ResultSet rs = stmt.executeQuery();
-
-        while (rs.next()) {
-            tulos = rs.getInt(1);
+        try (Connection con = database.getConnection(); PreparedStatement stmnt = con.prepareStatement("SELECT SUM(min) FROM Note WHERE user = ?")) {
+            stmnt.setInt(1, userId);
+            
+            try (ResultSet rs = stmnt.executeQuery()) {
+                while (rs.next()) {
+                    tulos = rs.getInt(1);
+                }
+            }
         }
-
-        rs.close();
-        stmt.close();
-        conn.close();
 
         return tulos;
     }
