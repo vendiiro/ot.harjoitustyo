@@ -47,4 +47,4 @@ Tiedostoon [checkstyle.xml](https://github.com/vendiiro/ot.harjoitustyo/blob/mas
 - Komento 
    - mvn package
  
-generoi hakemistoon target suoritettavan jar-tiedoston Paivakirja-1.0-SNAPSHOT.jar
+generoi hakemistoon target suoritettavan jar-tiedoston target/Paivakirja-1.0-SNAPSHOT.jar
