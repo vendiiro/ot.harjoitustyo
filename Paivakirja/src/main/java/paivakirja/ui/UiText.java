@@ -54,7 +54,6 @@ public class UiText {
                 switch (command) {
                     case "x":
                         logout();
-                        System.out.println("U r now logged out and should wor on tira");
                         break OUTER;
                     case "1":
                         createUser();

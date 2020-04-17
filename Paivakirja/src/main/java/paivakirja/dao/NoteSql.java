@@ -27,9 +27,9 @@ public class NoteSql implements DaoNote {
             stmnt.setInt(2, lenght);
             stmnt.setString(3, content);
             stmnt.setInt(4, user.getId());
-            
+
             stmnt.executeUpdate();
-            
+
         }
 
         return getUserWithDate(user, date);
@@ -50,7 +50,8 @@ public class NoteSql implements DaoNote {
                     stmnt.close();
                     conn.close();
                     return null;
-                }   note = new Note(rs.getDate("date").toLocalDate(), rs.getInt("min"), rs.getString("content"), user, rs.getInt("id"));
+                }
+                note = new Note(rs.getDate("date").toLocalDate(), rs.getInt("min"), rs.getString("content"), user, rs.getInt("id"));
             }
         }
 
@@ -84,7 +85,7 @@ public class NoteSql implements DaoNote {
 
         try (Connection con = database.getConnection(); PreparedStatement stmnt = con.prepareStatement("SELECT SUM(min) FROM Note WHERE user = ?")) {
             stmnt.setInt(1, userId);
-            
+
             try (ResultSet rs = stmnt.executeQuery()) {
                 while (rs.next()) {
                     tulos = rs.getInt(1);
