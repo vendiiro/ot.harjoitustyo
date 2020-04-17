@@ -18,7 +18,7 @@ NoteServicen ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
 ## Päätoiminnallisuudet
 Kuvaillaan seuraavaksi sovelluksen toimintalogiikkaa, muutaman päätoiminnallisuuden oasalta, hyödyntäen viikolla 3 opittuja sekvenssikaavioita.
 
-**Käyttäjän sisäänkirjautuminen
+**Käyttäjän sisäänkirjautuminen**
 
 Kun käyttäjä syöttää tekstinkäyttöliittymään login-toiminnallisuutta vastaavan komennon 1 ja painaa enter, etenee sovelluksen kontrolli seuraavan sekvenssikaavon kuvaamalla tavalla:
 ![kuva](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/kuvat/K%C3%A4ytt%C3%A4j%C3%A4n%20kirjaantuminen(1).png)
