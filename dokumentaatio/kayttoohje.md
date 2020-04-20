@@ -6,9 +6,7 @@ Ohjelma olettaa, että sen käynnistyshakemistossa on konfiguraatiotiedosto conf
 ## Ohjelman käynnistäminen
 Ohjelma käynnistetään komennolla
 
-'java -jar target/Paivakirja-1.0-SNAPSHOT.jar'
-
-
+`java -jar target/Paivakirja-1.0-SNAPSHOT.jar`
 
 **Kirjautuminen**
 
