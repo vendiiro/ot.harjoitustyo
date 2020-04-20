@@ -3,6 +3,11 @@ package paivakirja.ui;
 import java.io.FileInputStream;
 import paivakirja.domain.NoteService;
 import java.sql.SQLException;
+import java.time.LocalTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
@@ -12,6 +17,7 @@ import paivakirja.dao.DaoUser;
 import paivakirja.dao.Database;
 import paivakirja.dao.NoteSql;
 import paivakirja.dao.UserSql;
+import paivakirja.domain.Note;
 
 public class UiText {
 
@@ -44,7 +50,7 @@ public class UiText {
             OUTER:
             while (true) {
                 System.out.println();
-                System.out.println("Command: ");
+                System.out.print("Command: ");
                 String command = reader.nextLine();
                 System.out.println("");
                 if (!commands.keySet().contains(command)) {
@@ -62,10 +68,10 @@ public class UiText {
                         login();
                         break;
                     case "3":
-                        System.out.println("create note");
+                        createNote();
                         break;
                     case "4":
-                        System.out.println("time wasted while training");
+                        totalTimeWasted();
                         break;
                     case "5":
                         System.out.println("get all notes");
@@ -142,9 +148,109 @@ public class UiText {
         String username = reader.nextLine();
 
         if (noteService.login(username) == false) {
-            System.out.println("No such username. You need to register as a new user first!");
+            System.out.println("No such username found. You need to create a new user first!");
         }
 
+    }
+
+    private void createNote() throws SQLException {
+        if (noteService.isUserLoggedIn() == false) {
+            System.out.println("You need to be logged in to create a new note!");
+            return;
+        }
+        LocalDate date = null;
+        while (date == null) {
+            System.out.print("Date (dd/mm/yyyy): ");
+            String stringDate = reader.nextLine();
+            date = stringToDate(stringDate);
+            date = trainingInTheFuture(date);
+            date = notesHaveDifferentDate(date);
+        }
+        Integer length = null;
+        while (length == null) {
+            System.out.print("Training length: ");
+            String stringMins = reader.nextLine();
+            length = overTraining(stringMins);
+        }
+        String content = null;
+        while (content == null) {
+            System.out.println("Notes about your training session: ");
+            content = reader.nextLine();
+            content = noteContentLenght(content);
+        }
+
+        noteService.createNote(date, length, content);
+    }
+
+    private String noteContentLenght(String input) {
+        String trimInput = input.trim();
+        if (trimInput.length() < 10 || trimInput.length() > 500) {
+            System.out.println("Invalid, note has to be within 10 and 500 characters.");
+            trimInput = null;
+        }
+        return trimInput;
+    }
+
+    private LocalDate notesHaveDifferentDate(LocalDate date) throws SQLException {
+        LocalDate result = date;
+        List<Note> list = noteService.getAll();
+        for (Note note : list) {
+            if (note.getDate().equals(date)) {
+                result = null;
+                System.out.println("You already have a note with this date.");
+            }
+        }
+        return result;
+    }
+
+    private LocalDate trainingInTheFuture(LocalDate date) {
+        if (date == null) {
+            return date;
+        }
+        if (date.compareTo(LocalDate.now()) > 0) {
+            date = null;
+            System.out.println("You cant't train in the future!");
+        }
+        return date;
+    }
+
+    private Integer overTraining(String stringMins) {
+        try {
+            int mins = Integer.parseInt(stringMins);
+
+            if (mins < 10 || mins > 240) {
+                System.out.println("Invalid, daily training activity needs to be within 10 minutes and 240.");
+                return null;
+            }
+
+            return mins;
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid format for training length! Use numbers.");
+        }
+        return null;
+    }
+
+    private LocalDate stringToDate(String stringDate) {
+        try {
+            DateTimeFormatter DTF = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate date = LocalDate.parse(stringDate, DTF);
+            return date;
+        } catch (DateTimeParseException e) {
+            System.out.println("You wrote the date wrong!");
+        }
+        return null;
+    }
+
+    private void totalTimeWasted() throws SQLException {
+        if (noteService.isUserLoggedIn() == false) {
+            System.out.println("You need to be logged in first to see how much time U waste!");
+            return;
+        }
+        int allMinutes = noteService.totalTimeWasted() % 60;
+        int allHours = noteService.totalTimeWasted() / 60;
+
+        
+        System.out.println("U have used " + allHours + " hours and " + allMinutes + " minutes exercising.");
     }
 
     public static void main(String[] args) throws Exception {

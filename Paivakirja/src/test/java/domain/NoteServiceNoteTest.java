@@ -31,98 +31,53 @@ import paivakirja.domain.User;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class NoteServiceNoteTest {
-    
+
     @Mock
     DaoNote daoNote;
-    
+
     @Mock
     DaoUser daoUser;
-    
+
     NoteService noteService;
     User user;
-    
+
     @Before
     public void setup() throws SQLException {
         this.noteService = new NoteService(daoNote, daoUser);
-        this.user = new User("Cynthia Cyclist", "cycy", 1);
-        
-        when(daoUser.getUsingUsername("cycy")).thenReturn(user);
-        noteService.login("cycy");
-    }
-       
-    @Test
-    public void creatingNewNoteForCurrentUserWorks() throws Exception {      
-        LocalDate date = LocalDate.now();
-        Note note = new Note(date, 22, "foo", user, 1);
-        
-        when(daoNote.create(date, 22, "foo", user)).thenReturn(note);
-        
-        assertEquals(true, noteService.createNote(date, 22, "foo"));
-    }
-    
-    @Test
-    public void gettingKmCountForCurrentUserWorks() throws SQLException {
-        when(daoNote.totalTimeWasted(user)).thenReturn(12);
-        
-        assertEquals(12, noteService.totalTimeWasted());
-        
-    }
-    
-    @Test 
-    public void gettingListofNotesForCurrentUserWorksWhenThereAreNotes() throws SQLException {
-        Note note = new Note(LocalDate.now(), 22, "foo", user, 1);
-        List<Note> list = new ArrayList<>();
-        list.add(note);
+        this.user = new User("Lebron", "lbj", 1);
 
-        when(daoNote.getAll(user)).thenReturn(list);
-        
-        assertEquals(list, noteService.getAll());
-        
+        when(daoUser.getUsingUsername("lbj")).thenReturn(user);
+        noteService.login("lbj");
     }
-   
-    
+
     @Test
-    public void gettingListOfNotesForCurrentUserWorksWhenThereAreNoNotes() throws SQLException {
-        List<Note> list = new ArrayList<>();
-        
-        when(daoNote.getAll(user)).thenReturn(list);
-        
-        assertEquals(list, noteService.getAll());    
-    }
-    
-    
-    @Test 
-    public void noteIsDeletedCorrectlyWhenCurrentUserHasACorrespondingNote() throws SQLException {
-        List<Note> list = new ArrayList<>();
+    public void creatingNewNoteForCurrentUserWorks() throws Exception {
         LocalDate date = LocalDate.now();
-        Note note = new Note(date, 22, "foo", user, 1);
-        list.add(note);
-        
-        when(daoNote.getAll(user)).thenReturn(list);
-        
-        assertTrue(noteService.deleteNote(date));
+        Note note = new Note(date, 30, "Ulko koris treeni", user, 1);
+
+        when(daoNote.create(date, 30, "Ulko koris treeni", user)).thenReturn(note);
+
+        assertEquals(true, noteService.createNote(date, 30, "Ulko koris treeni"));
     }
-    
+
     @Test
-    public void tryingToDeleteANoteReturnsFalseWhenCurrentUserHasNoCorrespondingNote() throws SQLException {
-        List<Note> list = new ArrayList<>();
-        LocalDate date = LocalDate.now();
-        
-        when(daoNote.getAll(user)).thenReturn(list);
-        
-        assertFalse(noteService.deleteNote(date));
+    public void gettingTrainingLenghtForCurrentUserWorks() throws SQLException {
+        when(daoNote.totalTimeWasted(user)).thenReturn(30);
+
+        assertEquals(30, noteService.totalTimeWasted());
+
     }
-    
+
     @Test
     public void checkingIfUserIsLoggedInWorksWhenUserIsLoggedIn() throws SQLException {
         assertTrue(noteService.isUserLoggedIn());
     }
-    
+
     @Test
     public void checkingIfUserIsLoggedInWorksWhenUserIsNotLoggedIn() {
         noteService.logout();
-        
+
         assertFalse(noteService.isUserLoggedIn());
     }
-       
+
 }

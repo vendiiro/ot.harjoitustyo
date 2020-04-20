@@ -68,9 +68,7 @@ public class NoteSql implements DaoNote {
             stmnt.setInt(1, userId);
             try (ResultSet rs = stmnt.executeQuery()) {
                 while (rs.next()) {
-                    Note n = new Note(rs.getDate("date").toLocalDate(),
-                            rs.getInt("min"), rs.getString("content"), user,
-                            rs.getInt("id"));
+                    Note n = new Note(rs.getDate("date").toLocalDate(), rs.getInt("min"), rs.getString("content"), user, rs.getInt("id"));
                     list.add(n);
                 }
             }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -83,6 +84,21 @@ public class NoteServiceTest {
     @Test
     public void checkingIsUserLoggedInWorksWhenUserNotLoggedIn() {
         assertFalse(ns.isUserLoggedIn());
+    }
+
+    @Test
+    public void creatingNewNoteForTheUserWorks() throws Exception {
+        loginUser();
+
+        assertTrue(ns.createNote(LocalDate.now(), 60, "ulkosali treeni"));
+    }
+
+    @Test
+    public void gettingTrainingLenghtForTheUserWorks() throws SQLException {
+        loginUser();
+        ns.createNote(LocalDate.now(), 90, "juoksulenkki ja kahvittelut");
+
+        assertEquals(90, ns.totalTimeWasted());
     }
 
     @After
