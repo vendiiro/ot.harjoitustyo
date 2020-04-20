@@ -5,10 +5,14 @@
 **Sovelluksen nimi pending**
 
 
-# Harjoitustyö
+## Harjoitustyö
 Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja kirjaamaan treenissä sattuvia muistiinpanoja kuten loukkaantumisia treeni muotoja yms.
 
-# Dokumentaatio
+## Releaset
+
+[Viikko 5](https://github.com/vendiiro/ot.harjoitustyo/releases)
+
+## Dokumentaatio
 [Työaikakirjanpito](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 [Vaatimusmäärittely](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
@@ -19,7 +23,7 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
 
 [Käyttöohje](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
- # Komentorivikomennot
+ ## Komentorivikomennot
  **Svelluksen ajaminen komentoriviltä**
  - Voit suorittaa sovelluksen ajamisen komennolla 
     - mvn compile exec:java -Dexec.mainClass=paivakirja.Main
