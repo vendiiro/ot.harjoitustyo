@@ -13,4 +13,5 @@ PVM | Aika | Mitä tuli tehtyä
 10.4| 3h | checkstylen kanssa leikkimistä
 14.4| 4h | testien lisäämistä ja muita korjauksia
 14.4| 2h | sekvennsien tekoa 
-yhteensä| 40h | hyvin saa kulumaan aikaa
+20.4| 4h | testejä ja tekstinkäyttöliittymää
+yhteensä| 48h | hyvin saa kulumaan aikaa
