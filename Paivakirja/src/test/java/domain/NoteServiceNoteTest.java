@@ -60,18 +60,7 @@ public class NoteServiceNoteTest {
         assertEquals(true, noteService.createNote(date, 30, "Ulko koris treeni"));
     }
 
-    @Test
-    public void gettingTrainingLenghtForCurrentUserWorks() throws SQLException {
-        when(daoNote.totalTimeWasted(user)).thenReturn(30);
-
-        assertEquals(30, noteService.totalTimeWasted());
-
-    }
-
-    @Test
-    public void checkingIfUserIsLoggedInWorksWhenUserIsLoggedIn() throws SQLException {
-        assertTrue(noteService.isUserLoggedIn());
-    }
+  
 
     @Test
     public void checkingIfUserIsLoggedInWorksWhenUserIsNotLoggedIn() {
