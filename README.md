@@ -6,7 +6,13 @@
 
 
 ## Harjoitustyö
-Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja kirjaamaan treenissä sattuvia muistiinpanoja kuten loukkaantumisia treeni muotoja yms.
+Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja kirjaamaan treenissä sattuvia muistiinpanoja kuten loukkaantumisia treeni muotoja yms. Sovellusta voi käyttää useampi rekisteröitynyt käyttäjä, ja jokaisella heista on omat henkilökohtaiset muistiinpanot. 
+- Sovelluksessa voi
+    -  kirjata talteen päiväkohtaisen treenin saldon aikana ja päivään liittyvät muistiinpanot
+    - nähdä kuinka paljon käyttäjä on treenannut yhteensä h/min
+    - nähdä listaa kaikista päiväkohtaisista muistiinpanoista
+    - poistaa päiväkohtaisen muistiinpanon
+
 
 ## Releaset
 

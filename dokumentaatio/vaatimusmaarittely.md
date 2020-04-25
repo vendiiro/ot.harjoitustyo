@@ -13,9 +13,9 @@ __Treenipäivis-sovelluksen käyttäjien toiminnallisuuksia ovat esim. seuraavat
  - uuden käyttäjän tulee luoda sovellusta käyttääkseen käyttäjätunnus, joka on uniikki. [Tehty]
  - käyttäjä voi kirjautua järjestelmään syöttämällä aiemmin luomansa käyttäjätunnuksen käyttöliittymään [Tehty]
  - kirjautumisen jälkeen käyttäjä näkee kuinka paljon hän käyttää aikaa treeneihinsä[Tehty]
- - käyttäjä näkee listan päiväkohtaisista treeneistään ja kommenteistaan
+ - käyttäjä näkee listan päiväkohtaisista treeneistään ja kommenteistaan [Tehty]
  - käyttäjä voi lisätä päiväkohtaisen treenin ja tähän liittyvät tiedot ja merkinnät [Tehty]
- - käyttäjä voi poistaa päiväkohtaisen merkintänsä
+ - käyttäjä voi poistaa päiväkohtaisen merkintänsä [Tehty]
  - käyttäjä voi kirjautua ulos järjestelmästä [Tehty]
 
 __Sovelluksen jatkokehitys__
