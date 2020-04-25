@@ -95,8 +95,22 @@ public class NoteSql implements DaoNote {
     }
 
     @Override
-    public boolean deleteNote(LocalDate date, User user) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean deleteNote(LocalDate date, User u) throws SQLException {
+        int userId = u.getId();
+
+        Date sqlDate = Date.valueOf(date);
+
+        Connection con = database.getConnection();
+
+        PreparedStatement stmnt = con.prepareStatement("DELETE FROM Note WHERE user = ? AND date = ?");
+        stmnt.setInt(1, userId);
+        stmnt.setDate(2, sqlDate);
+
+        stmnt.executeUpdate();
+
+        stmnt.close();
+        con.close();
+        return true;
     }
 
 }

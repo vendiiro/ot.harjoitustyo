@@ -66,6 +66,7 @@ public class UiText {
                         break;
                     case "2":
                         login();
+                        System.out.println("You are now logged in!");
                         break;
                     case "3":
                         createNote();
@@ -74,10 +75,10 @@ public class UiText {
                         totalTimeWasted();
                         break;
                     case "5":
-                        System.out.println("get all notes");
+                        getEveryNote();
                         break;
                     case "6":
-                        System.out.println("delete one of your notes");
+                        deleteNote();
                         break;
                     default:
                         break;
@@ -249,8 +250,46 @@ public class UiText {
         int allMinutes = noteService.totalTimeWasted() % 60;
         int allHours = noteService.totalTimeWasted() / 60;
 
-        
         System.out.println("U have used " + allHours + " hours and " + allMinutes + " minutes exercising.");
+    }
+
+    private void getEveryNote() throws SQLException {
+        if (noteService.isUserLoggedIn() == false) {
+            System.out.println("You need to be logged in first to get all of your notes!");
+            return;
+        }
+
+        List<Note> notes = noteService.getAll();
+        if (notes.isEmpty()) {
+            System.out.println("You have not written any new notes yet.");
+        } else {
+            for (Note n : notes) {
+                System.out.println(n.toString());
+                System.out.println("############");
+            }
+        }
+    }
+
+    private void deleteNote() throws SQLException {
+        if (noteService.isUserLoggedIn() == false) {
+            System.out.println("You need to be logged in to delete your notes!");
+            return;
+        }
+        System.out.println("Select by date which one of your notes you would like to be removed?");
+
+        LocalDate localDate = null;
+        while (localDate == null) {
+            System.out.print("Date (dd/mm/yyyy): ");
+            String stringDate = reader.nextLine();
+
+            localDate = stringToDate(stringDate);
+        }
+        boolean result = noteService.deleteNote(localDate);
+        if (result == false) {
+            System.out.println("You don't have a any notes from this date.");
+        } else {
+            System.out.println("This days note: " + localDate + " has been deleted.");
+        }
     }
 
     public static void main(String[] args) throws Exception {

@@ -68,5 +68,53 @@ public class NoteServiceNoteTest {
 
         assertFalse(noteService.isUserLoggedIn());
     }
+    
+    @Test
+    public void gettingKmCountForCurrentUserWorks() throws SQLException {
+        when(daoNote.totalTimeWasted(user)).thenReturn(12);
+        
+        assertEquals(12, noteService.totalTimeWasted());
+        
+    }
+ @Test 
+    public void gettingListofNotesForCurrentUserWorksWhenThereAreNotes() throws SQLException {
+        Note note = new Note(LocalDate.now(), 30, "Ulko koris treeni", user, 1);
+        List<Note> list = new ArrayList<>();
+        list.add(note);
 
+        when(daoNote.getAll(user)).thenReturn(list);
+        
+        assertEquals(list, noteService.getAll());
+        
+    }
+     @Test
+    public void gettingListOfNotesForCurrentUserWorksWhenThereAreNoNotes() throws SQLException {
+        List<Note> list = new ArrayList<>();
+        
+        when(daoNote.getAll(user)).thenReturn(list);
+        
+        assertEquals(list, noteService.getAll());    
+    }
+       
+    @Test 
+    public void noteIsDeletedCorrectlyWhenCurrentUserHasACorrespondingNote() throws SQLException {
+        List<Note> list = new ArrayList<>();
+        LocalDate date = LocalDate.now();
+        Note note = new Note(date, 30, "gym", user, 1);
+        list.add(note);
+        
+        when(daoNote.getAll(user)).thenReturn(list);
+        
+        assertTrue(noteService.deleteNote(date));
+    }
+    
+    @Test
+    public void tryingToDeleteANoteReturnsFalseWhenCurrentUserHasNoCorrespondingNote() throws SQLException {
+        List<Note> list = new ArrayList<>();
+        LocalDate date = LocalDate.now();
+        
+        when(daoNote.getAll(user)).thenReturn(list);
+        
+        assertFalse(noteService.deleteNote(date));
+    }
 }

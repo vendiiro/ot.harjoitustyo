@@ -7,7 +7,6 @@ import java.util.Objects;
 /**
  * Yksittäistä muistiinpanoa kuvaava luokka.
  */
-
 public class Note {
 
     private LocalDate date;
@@ -66,7 +65,7 @@ public class Note {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         return "Date: " + this.date.format(format) + "\n" + "Length of the training session: "
-                + this.length + "\n" + "Your notes from this session: " + this.content;
+                + this.length + " minutes" + "\n" + "Your notes from the session: " + this.content;
     }
 
     @Override

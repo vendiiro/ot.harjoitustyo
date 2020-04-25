@@ -39,23 +39,45 @@ public class NoteSqlTest {
         database.creatingTables();
 
         this.userDao = new UserSql(database);
-        this.user = this.userDao.create("Cynthia Cyclist", "cycy");
+        this.user = this.userDao.create("kris kros", "cbum");
         this.noteDao = new NoteSql(database);
     }
 
     @Test
     public void noteIsCreatedWithoutError() throws Exception {
-        Note result = this.noteDao.create(LocalDate.now(), 1, "foo", user);
+        Note result = this.noteDao.create(LocalDate.now(), 60, "gym", user);
 
         assertNotNull(result);
     }
     @Test
     public void notesAreReadCorrectlyFromDatabase() throws Exception {
-        this.noteDao.create(LocalDate.now(), 1, "foo", user);
+        this.noteDao.create(LocalDate.now(), 60, "gym", user);
         
         List<Note> list = noteDao.getAll(this.user);
         
         assertEquals(1, list.size());
+    }
+     public void totalTimeWastedIsReadCorrectlyWhenThereAreNotes() throws Exception {
+        this.noteDao.create(LocalDate.now(), 30, "gym", user);
+        
+        int result = this.noteDao.totalTimeWasted(this.user);
+        
+        assertEquals(30, result);
+    }
+     
+    @Test
+    public void noteIsDeletedCorrectly() throws Exception {
+        LocalDate date = LocalDate.now();
+        this.noteDao.create(date, 60, "gym", this.user);  
+        boolean result = this.noteDao.deleteNote(date, this.user);
+        
+        assertTrue(result);
+    }
+      @Test
+    public void totalTimeWastedReturns0WhenNoTimeIsWasted() throws Exception {
+        int result = this.noteDao.totalTimeWasted(this.user);
+        
+        assertEquals(0, result);
     }
 
     @After
