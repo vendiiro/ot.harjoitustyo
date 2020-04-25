@@ -28,6 +28,7 @@ Kun käyttäjä on syöttänyt komennon 1, tekstikäyttöliittymä tarkastaa Not
 NoteService-olio kutsuu DaoUser:in metodia getUsingUsername, antaen sille parametriksi äsken käyttöliittymästä saadun käyttäjänimen. Jos käyttäjänimeä vastaava käyttäjä on olemassa, UserDao antaa sen paluuarvona NoteService:lle. Tämän jälkeen NoteService asetettaa kyseisen käyttäjän kirjautuneeksi sisään, ja palauttaa tekstinkäyttöliittymään arvon true.
 
 **Uuden päivittäisen muistiinpanon luominen**
+
 Kun käyttäjä syöttää tekstinkäyttöliittymään create new note-toiminnallisuutta vastaavan komennon 3 ja painaa enter, etenee sovelluksen kontrolli seuraavasti:
 ![kuva](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/kuvat/Uuden%20p%C3%A4iv%C3%A4kohtaisen%20muistiinpanon%20luominen(2).png)
 Aluksi tekstikäyttöliittymä tarkastaa NoteService:n isUserLoggedIn-metodia kutsumalla, että syötteen 3 antanut käyttäjä on myös kirjautunut järjestelmään. Mikäli hän on niin, tekstikäyttöliittymän createNote-metodi kutsuu NoteService-olion createNote-metodia antaen sille parametriksi käyttäjän antamat tiedot: päivämäärän, treenin pituuden, ja käyttäjän muistiinpanot treenistä . NoteService-oliolla on tieto siitä, kuka on sovelluksen tämän hetkinen sisäänkirjautunut käyttäjä.
