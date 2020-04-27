@@ -65,7 +65,6 @@ public class UiText {
                         break;
                     case "2":
                         login();
-                        System.out.println("You are now logged in!");
                         break;
                     case "3":
                         createNote();
@@ -144,11 +143,14 @@ public class UiText {
             System.out.println("Username '" + noteService.getLoggedUser().getUsername() + "' is already logged in.");
             return;
         }
-        System.out.println("Username: ");
+        System.out.print("Username: ");
         String username = reader.nextLine();
 
         if (noteService.login(username) == false) {
             System.out.println("No such username found. You need to create a new user first!");
+        } else {
+            System.out.println(username + " is now logged in");
+
         }
 
     }
