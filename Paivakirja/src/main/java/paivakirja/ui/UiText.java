@@ -116,7 +116,7 @@ public class UiText {
         if (noteService.createUser(name, username) == false) {
             System.out.println("The username is already taken. Select different username!");
         } else {
-            System.out.println("You have succesfully created new user. Select two to login and continue.");
+            System.out.println("You have succesfully created a new user. Press number two to login and continue.");
         }
     }
 
