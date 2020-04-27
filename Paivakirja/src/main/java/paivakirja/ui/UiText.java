@@ -31,7 +31,6 @@ public class UiText {
 
     private TreeMap<String, String> createInstructions() {
         TreeMap inst = new TreeMap<>();
-        System.out.println("Choose one of the following commands:");
 
         inst.put("1", "1: create new user");
         inst.put("2", "2: login with your username");
@@ -161,7 +160,7 @@ public class UiText {
         }
         LocalDate date = null;
         while (date == null) {
-            System.out.print("Date (dd/mm/yyyy): ");
+            System.out.print("Write the date in this form -> (dd/mm/yyyy): ");
             String stringDate = reader.nextLine();
             date = stringToDate(stringDate);
             date = trainingInTheFuture(date);
@@ -169,13 +168,13 @@ public class UiText {
         }
         Integer length = null;
         while (length == null) {
-            System.out.print("Training length: ");
+            System.out.print("Training length in minutes (10-240): ");
             String stringMins = reader.nextLine();
             length = overTraining(stringMins);
         }
         String content = null;
         while (content == null) {
-            System.out.println("Notes about your training session: ");
+            System.out.println("Notes about your training session (within 10-500 charecters): ");
             content = reader.nextLine();
             content = noteContentLenght(content);
         }
@@ -220,7 +219,7 @@ public class UiText {
             int mins = Integer.parseInt(stringMins);
 
             if (mins < 10 || mins > 240) {
-                System.out.println("Too little. Your daily training activity needs to be within 10 minutes and 240.");
+                System.out.println("Your training session was too short or too long.");
                 return null;
             }
 
@@ -279,7 +278,7 @@ public class UiText {
 
         LocalDate localDate = null;
         while (localDate == null) {
-            System.out.print("Date (dd/mm/yyyy): ");
+            System.out.print("Form of date -> (dd/mm/yyyy): ");
             String stringDate = reader.nextLine();
 
             localDate = stringToDate(stringDate);
