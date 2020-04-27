@@ -14,4 +14,5 @@ PVM | Aika | Mitä tuli tehtyä
 14.4| 4h | testien lisäämistä ja muita korjauksia
 14.4| 2h | sekvennsien tekoa 
 20.4| 4h | testejä ja tekstinkäyttöliittymää
-yhteensä| 48h | hyvin saa kulumaan aikaa
+27.4| 4h | Palautteen hyödyntämistä
+yhteensä| 52h | hyvin saa kulumaan aikaa
