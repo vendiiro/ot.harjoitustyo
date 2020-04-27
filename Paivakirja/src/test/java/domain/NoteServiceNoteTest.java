@@ -97,10 +97,10 @@ public class NoteServiceNoteTest {
     }
        
     @Test 
-    public void noteIsDeletedCorrectlyWhenCurrentUserHasACorrespondingNote() throws SQLException {
+    public void noteIsDeletedWhenThereIsTheWantedNote() throws SQLException {
         List<Note> list = new ArrayList<>();
         LocalDate date = LocalDate.now();
-        Note note = new Note(date, 30, "gym", user, 1);
+        Note note = new Note(date, 30, "sali treeni", user, 1);
         list.add(note);
         
         when(daoNote.getAll(user)).thenReturn(list);
@@ -109,7 +109,7 @@ public class NoteServiceNoteTest {
     }
     
     @Test
-    public void tryingToDeleteANoteReturnsFalseWhenCurrentUserHasNoCorrespondingNote() throws SQLException {
+    public void deletingTheWantedNoteDoesNotWorkWhenTheWantedNoteDoesNotExist() throws SQLException {
         List<Note> list = new ArrayList<>();
         LocalDate date = LocalDate.now();
         

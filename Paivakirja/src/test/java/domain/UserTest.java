@@ -13,25 +13,31 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import paivakirja.domain.User;
 
 /**
  *
  * @author iiro
  */
 public class UserTest {
+    private User usr;
+    
+    @Before
+    public void setUp() {
+        usr = new User("matti", "masa", 1);
+    }
+    
     
   @Test
     public void equalWhenSameUsername() {
-        User u1 = new User("big rammy", "bigR", 1);
-        User u2 = u1;
-        assertTrue(u1.equals(u2));
+        User u1 = new User("matti", "masa", 1);
+        assertTrue(usr.equals(u1));
     }
     
     @Test
     public void nonEqualWhenDifferentId() {
-        User u1 = new User("test", "Teest", 3);
-        User u2 = new User("test", "Teest", 4);
-        assertFalse(u1.equals(u2));
+        User u1 = new User("test", "Teest", 2);
+        assertFalse(usr.equals(u1));
     } 
     
     @Test

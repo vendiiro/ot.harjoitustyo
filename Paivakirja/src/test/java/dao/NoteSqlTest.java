@@ -45,20 +45,20 @@ public class NoteSqlTest {
 
     @Test
     public void noteIsCreatedWithoutError() throws Exception {
-        Note result = this.noteDao.create(LocalDate.now(), 60, "gym", user);
+        Note result = this.noteDao.create(LocalDate.now(), 60, "gym and basketball", user);
 
         assertNotNull(result);
     }
     @Test
     public void notesAreReadCorrectlyFromDatabase() throws Exception {
-        this.noteDao.create(LocalDate.now(), 60, "gym", user);
+        this.noteDao.create(LocalDate.now(), 60, "gym and basketball", user);
         
         List<Note> list = noteDao.getAll(this.user);
         
         assertEquals(1, list.size());
     }
      public void totalTimeWastedIsReadCorrectlyWhenThereAreNotes() throws Exception {
-        this.noteDao.create(LocalDate.now(), 30, "gym", user);
+        this.noteDao.create(LocalDate.now(), 30, "gym and basketball", user);
         
         int result = this.noteDao.totalTimeWasted(this.user);
         
@@ -68,7 +68,7 @@ public class NoteSqlTest {
     @Test
     public void noteIsDeletedCorrectly() throws Exception {
         LocalDate date = LocalDate.now();
-        this.noteDao.create(date, 60, "gym", this.user);  
+        this.noteDao.create(date, 60, "gym and basketball", this.user);  
         boolean result = this.noteDao.deleteNote(date, this.user);
         
         assertTrue(result);

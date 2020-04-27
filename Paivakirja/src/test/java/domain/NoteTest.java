@@ -10,8 +10,6 @@ import paivakirja.domain.Note;
 import paivakirja.domain.User;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -36,21 +34,21 @@ public class NoteTest {
     @Test
     public void equalWhenSameId() {
 
-        Note t1 = new Note(date, 60, "moi", user, 1);
-        Note t2 = new Note(date, 60, "moi", user, 1);
+        Note t1 = new Note(date, 60, "sali treeni", user, 1);
+        Note t2 = new Note(date, 60, "sali treeni", user, 1);
         assertTrue(t1.equals(t2));
     }
 
     @Test
     public void notEqualWhenDifferentId() {
-        Note t1 = new Note(date, 60, "jes", user, 1);
-        Note t2 = new Note(date, 60, "jes", user, 2);
+        Note t1 = new Note(date, 60, "sali treeni", user, 1);
+        Note t2 = new Note(date, 60, "sali treeni", user, 2);
         assertFalse(t1.equals(t2));
     }
 
     @Test
     public void nonEqualWhenDifferentType() {
-        Note t = new Note(date, 60, "jes", user, 1);
+        Note t = new Note(date, 60, "sali treeni", user, 1);
         Object o = new Object();
         assertFalse(t.equals(o));
     }

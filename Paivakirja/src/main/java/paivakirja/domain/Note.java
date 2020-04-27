@@ -2,7 +2,6 @@ package paivakirja.domain;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 
 /**
  * Yksittäistä muistiinpanoa kuvaava luokka.
@@ -66,17 +65,6 @@ public class Note {
 
         return "Date: " + this.date.format(format) + "\n" + "Length of the training session: "
                 + this.length + " minutes" + "\n" + "Your notes from the session: " + this.content;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 17 * hash + Objects.hashCode(this.date);
-        hash = 17 * hash + this.length;
-        hash = 17 * hash + Objects.hashCode(this.content);
-        hash = 17 * hash + Objects.hashCode(this.user);
-        hash = 17 * hash + this.id;
-        return hash;
     }
 
     @Override

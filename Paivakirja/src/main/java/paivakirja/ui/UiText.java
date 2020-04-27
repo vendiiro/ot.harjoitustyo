@@ -35,7 +35,7 @@ public class UiText {
 
         inst.put("1", "1: create new user");
         inst.put("2", "2: login with your username");
-        inst.put("3", "3: add a new note of your training session");
+        inst.put("3", "3: add a new note about your training session");
         inst.put("4", "4: total minutes wasted while training");
         inst.put("5", "5: list all notes about your training");
         inst.put("6", "6: delete note by date");
@@ -220,7 +220,7 @@ public class UiText {
             int mins = Integer.parseInt(stringMins);
 
             if (mins < 10 || mins > 240) {
-                System.out.println("Invalid, daily training activity needs to be within 10 minutes and 240.");
+                System.out.println("Too little. Your daily training activity needs to be within 10 minutes and 240.");
                 return null;
             }
 

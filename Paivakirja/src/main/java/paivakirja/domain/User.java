@@ -30,34 +30,16 @@ public class User {
         return this.id;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 11 * hash + Objects.hashCode(this.name);
-        hash = 11 * hash + Objects.hashCode(this.username);
-        hash = 11 * hash + this.id;
-        return hash;
-    }
+  
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
+        if (!(obj instanceof User)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final User other = (User) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        return Objects.equals(this.username, other.username);
+
+        User other = (User) obj;
+        return username.equals(other.username);
     }
 
 }
