@@ -58,3 +58,10 @@ Tiedostoon [checkstyle.xml](https://github.com/vendiiro/ot.harjoitustyo/blob/mas
    - mvn package
  
 generoi hakemistoon target suoritettavan jar-tiedoston target/Paivakirja-1.0-SNAPSHOT.jar
+
+**JavaDoc**
+
+JavaDoc genaroidaan komennolla
+- JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ mvn clean javadoc:javadoc
+ 
+ jonka jälkeen JavaDoc löytyy hakemistosta target/site/apidocs/index.html
