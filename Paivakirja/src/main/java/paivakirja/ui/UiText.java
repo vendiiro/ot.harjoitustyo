@@ -160,7 +160,7 @@ public class UiText {
         }
         LocalDate date = null;
         while (date == null) {
-            System.out.print("Write the date in this form -> (dd/mm/yyyy): ");
+            System.out.print("Write the date of your note in this form -> (dd/mm/yyyy): ");
             String stringDate = reader.nextLine();
             date = stringToDate(stringDate);
             date = trainingInTheFuture(date);
