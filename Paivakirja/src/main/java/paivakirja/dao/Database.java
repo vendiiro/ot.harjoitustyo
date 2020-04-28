@@ -2,6 +2,10 @@ package paivakirja.dao;
 
 import java.sql.*;
 
+/**
+ * Luokka luo tietokannan sovellukselle ja tallettaa sen parametrina annettuun
+ * osoitteeseen.
+ */
 public class Database {
 
     private final String database;
@@ -20,7 +24,7 @@ public class Database {
      * Metodi luo yhteyden tietokantaan.
      *
      * @return yhteys tietokantaan
-     * 
+     *
      * @throws SQLException virhe tietokannassa
      */
     public Connection getConnection() throws SQLException {
@@ -37,7 +41,7 @@ public class Database {
                 + "name text NOT NULL,\n" + "username text NOT NULL\n" + ");";
 
         String noteTable = "CREATE TABLE IF NOT EXISTS Note (\n"
-                + "id integer PRIMARY KEY,\n" + "date date NOT NULL,\n" + "min integer NOT NULL,\n"
+                + "id integer PRIMARY KEY,\n" + "date date NOT NULL,\n" + "length integer NOT NULL,\n"
                 + "content text NOT NULL,\n" + "user integer NOT NULL,\n"
                 + "FOREIGN KEY(user) REFERENCES User(id)\n" + ");";
 

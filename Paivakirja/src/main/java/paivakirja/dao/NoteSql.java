@@ -43,7 +43,7 @@ public class NoteSql implements DaoNote {
     @Override
     public Note create(LocalDate date, int length, String content, User user) throws SQLException {
 
-        try (Connection con = database.getConnection(); PreparedStatement stmnt = con.prepareStatement("INSERT INTO Note (date, min, content, user) VALUES (?,?,?,?)")) {
+        try (Connection con = database.getConnection(); PreparedStatement stmnt = con.prepareStatement("INSERT INTO Note (date, length, content, user) VALUES (?,?,?,?)")) {
             stmnt.setDate(1, Date.valueOf(date));
             stmnt.setInt(2, length);
             stmnt.setString(3, content);
@@ -84,7 +84,7 @@ public class NoteSql implements DaoNote {
                     conn.close();
                     return null;
                 }
-                note = new Note(rs.getDate("date").toLocalDate(), rs.getInt("min"), rs.getString("content"), user, rs.getInt("id"));
+                note = new Note(rs.getDate("date").toLocalDate(), rs.getInt("length"), rs.getString("content"), user, rs.getInt("id"));
             }
         }
 
@@ -109,7 +109,7 @@ public class NoteSql implements DaoNote {
             stmnt.setInt(1, userId);
             try (ResultSet rs = stmnt.executeQuery()) {
                 while (rs.next()) {
-                    Note n = new Note(rs.getDate("date").toLocalDate(), rs.getInt("min"), rs.getString("content"), user, rs.getInt("id"));
+                    Note n = new Note(rs.getDate("date").toLocalDate(), rs.getInt("length"), rs.getString("content"), user, rs.getInt("id"));
                     list.add(n);
                 }
             }
@@ -132,7 +132,7 @@ public class NoteSql implements DaoNote {
         int userId = user.getId();
         int tulos = 0;
 
-        try (Connection con = database.getConnection(); PreparedStatement stmnt = con.prepareStatement("SELECT SUM(min) FROM Note WHERE user = ?")) {
+        try (Connection con = database.getConnection(); PreparedStatement stmnt = con.prepareStatement("SELECT SUM(length) FROM Note WHERE user = ?")) {
             stmnt.setInt(1, userId);
 
             try (ResultSet rs = stmnt.executeQuery()) {
