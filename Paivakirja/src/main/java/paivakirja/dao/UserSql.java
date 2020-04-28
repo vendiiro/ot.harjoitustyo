@@ -6,14 +6,33 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Luokka vastaa käyttäjän luomisesta ja hänen tietojensa etsimisetä SQL-
+ * tietokannasta.
+ */
 public class UserSql implements DaoUser {
 
     private Database database;
 
+    /**
+     * Konstruktori.
+     *
+     * @param database tietokanta
+     */
     public UserSql(Database database) {
         this.database = database;
     }
 
+    /**
+     * Metodi luo käyttäjän, joka vastaa parametreina saatuja tietoja.
+     *
+     * @param name Käyttäjän oma nimi
+     * @param username Käyttäjän käyttäjänimi
+     *
+     * @return Luotu käyttäjä
+     *
+     * @throws SQLException virhe tietokannassa
+     */
     @Override
     public User create(String name, String username) throws SQLException {
         Connection conn = database.getConnection();
@@ -31,6 +50,16 @@ public class UserSql implements DaoUser {
         return getUsingUsername(username);
     }
 
+    /**
+     * Metodi etsii annettua käyttäjänimeä vastaavan käyttäjän.
+     *
+     * @param username Käyttäjänimi
+     *
+     * @return parametrina annettuun käyttäjänimeen liittyvä käyttäjä, tai null
+     * jos käyttäjänimen on vienyt toinen käyttäjä
+     *
+     * @throws SQLException virhe tietokannassa
+     */
     @Override
     public User getUsingUsername(String username) throws SQLException {
         Connection conn = database.getConnection();

@@ -11,20 +11,41 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Luokka vastaa käyttäjän muistiinpanojen tietojen luomisesta, käsittelystä ja
+ * tallentamisesta SQL-tietokantaan.
+ */
 public class NoteSql implements DaoNote {
 
     private final Database database;
 
+    /**
+     * Konstruktori.
+     *
+     * @param database tietokanta
+     */
     public NoteSql(Database database) {
         this.database = database;
     }
 
+    /**
+     * Metodi luo muistiinpanon, joka vastaa parametreina saatuja tietoja.
+     *
+     * @param date Muistiinpanon pvm
+     * @param length Kauanko treeniin on kulunut aikaa
+     * @param content Muistiinpanoon liittyvä tekstisisältö
+     * @param user Muistiinpanoon liittyvä käyttäjä
+     *
+     * @return Luotu muistiinpano
+     *
+     * @throws SQLException virhe tietokannassa
+     */
     @Override
-    public Note create(LocalDate date, int lenght, String content, User user) throws SQLException {
+    public Note create(LocalDate date, int length, String content, User user) throws SQLException {
 
         try (Connection con = database.getConnection(); PreparedStatement stmnt = con.prepareStatement("INSERT INTO Note (date, min, content, user) VALUES (?,?,?,?)")) {
             stmnt.setDate(1, Date.valueOf(date));
-            stmnt.setInt(2, lenght);
+            stmnt.setInt(2, length);
             stmnt.setString(3, content);
             stmnt.setInt(4, user.getId());
 
@@ -36,6 +57,18 @@ public class NoteSql implements DaoNote {
 
     }
 
+    /**
+     * Metodi hakee tietokannasta tietokannan luoman tunnisteen (id)
+     * muistiinpanolle ja palauttaa näitä tietoja vastaavan muistiinpanon
+     * käyttäjälle.
+     *
+     * @param user Käyttäjä, joka on luonut muistiinpanon
+     * @param date Pvm, jolloin henkilö on treenannut
+     *
+     * @return Käyttäjän luoma muistiinpano, tai null jos muistiinpanoa ei löydy
+     *
+     * @throws SQLException virhe tietokannassa
+     */
     public Note getUserWithDate(User user, LocalDate date) throws SQLException {
         String username = user.getUsername();
 
@@ -59,6 +92,14 @@ public class NoteSql implements DaoNote {
 
     }
 
+    /**
+     * Metodi palauttaa kaikki nykyisen käyttäjän muistiinpanot.
+     *
+     * @param user Käyttäjä, johon muistiinpanot liittyvät
+     * @return lista muistiinpanoja tai tyhjä lista jos muistiinpanoja ei ole
+     *
+     * @throws SQLException virhe tietokannassa
+     */
     @Override
     public List<Note> getAll(User user) throws SQLException {
         List<Note> list = new ArrayList<>();
@@ -76,6 +117,16 @@ public class NoteSql implements DaoNote {
         return list;
     }
 
+    /**
+     * Metodi kertoo kuinka paljon käyttäjä on yhteensä kuluttaa aikaa
+     * treeneihin yhteensä.
+     *
+     * @param user Käyttäjä
+     * @return treeniin kulutettu aika yhteensä tai 0 jos ei ole yhtää tullut
+     * treenattua
+     *
+     * @throws SQLException virhe tietokannassa
+     */
     @Override
     public int totalTimeWasted(User user) throws SQLException {
         int userId = user.getId();
@@ -94,6 +145,16 @@ public class NoteSql implements DaoNote {
         return tulos;
     }
 
+    /**
+     * Metodi poistaa muistiinpanon halutulla päivämäärältä.
+     *
+     * @param date Käyttäjän antama pvm
+     * @param u Käyttäjä
+     *
+     * @return true mikäli muistiinpanon poistaminen onnistui
+     *
+     * @throws SQLException virhe tietokannassa
+     */
     @Override
     public boolean deleteNote(LocalDate date, User u) throws SQLException {
         int userId = u.getId();

@@ -28,7 +28,7 @@ public interface DaoUser {
      * @param username Käyttäjänimi
      * 
      * @return parametrina annettuun käyttäjänimeen liittyvä käyttäjä,
-     * tai null jos käyttäjänimellä on jo luotu toinen käyttäjä
+     * tai null jos käyttäjänimen on vienyt toinen käyttäjä
      * 
      * @throws SQLException virhe tietokannassa
      */

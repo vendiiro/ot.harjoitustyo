@@ -52,7 +52,7 @@ public class NoteServiceUserTest {
         User user = new User("iiro", "ipe", 1);
         when(daoUser.getUsingUsername("ipe")).thenReturn(user);
 
-        noteService.createUser("iiro", "ipe");
+        noteService.createUser("iira", "ipe");
         assertEquals(false, noteService.createUser("iira", "ipe"));
     }
 

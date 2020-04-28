@@ -15,16 +15,16 @@ public interface DaoNote {
     /**
      * Metodi luo muistiinpanon, joka vastaa parametreina saatuja tietoja.
      *
-     * @param date Muistiinpanon päivämäärä
-     * @param min Kauanko treeneihin on kulunut aikaa
+     * @param date Muistiinpanon pvm
+     * @param length Kauanko treeniin on kulunut aikaa
      * @param content Muistiinpanoon liittyvä tekstisisältö
-     * @param user Käyttäjä, johon muistiinpano liittyy
+     * @param user Muistiinpanoon liittyvä käyttäjä
      *
      * @return Luotu muistiinpano
      *
      * @throws SQLException virhe tietokannassa
      */
-    Note create(LocalDate date, int min, String content, User user) throws SQLException;
+    Note create(LocalDate date, int length, String content, User user) throws SQLException;
 
     /**
      * Metodi palauttaa kaikki nykyisen käyttäjän muistiinpanot.
@@ -54,7 +54,7 @@ public interface DaoNote {
      * @param date Käyttäjän antama pvm
      * @param user Käyttäjä
      *
-     * @return true jos poistaminen onnistui
+     * @return true mikäli muistiinpanon poistaminen onnistui
      *
      * @throws SQLException virhe tietokannassa
      */

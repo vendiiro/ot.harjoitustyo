@@ -9,7 +9,7 @@ public class Database {
     /**
      * Konstruktori.
      *
-     * @param adress Tietokannan osoite
+     * @param adress tietokannan osoite
      * @throws ClassNotFoundException virhe tietokannassa
      */
     public Database(String adress) throws ClassNotFoundException {
@@ -20,6 +20,7 @@ public class Database {
      * Metodi luo yhteyden tietokantaan.
      *
      * @return yhteys tietokantaan
+     * 
      * @throws SQLException virhe tietokannassa
      */
     public Connection getConnection() throws SQLException {

@@ -64,7 +64,7 @@ public class Note {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         return "Date: " + this.date.format(format) + "\n" + "Length of the training session: "
-                + this.length + " minutes" + "\n" + "Your notes from the session: " + this.content;
+                + this.length / 60 + " hours and " + this.length % 60 + " minutes" + "\n" + "Your notes from the session: " + this.content;
     }
 
     @Override

@@ -3,7 +3,6 @@ package paivakirja.ui;
 import java.io.FileInputStream;
 import paivakirja.domain.NoteService;
 import java.sql.SQLException;
-import java.time.LocalTime;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -35,7 +34,7 @@ public class UiText {
         inst.put("1", "1: create new user");
         inst.put("2", "2: login with your username");
         inst.put("3", "3: add a new note about your training session");
-        inst.put("4", "4: total minutes wasted while training");
+        inst.put("4", "4: total time wasted while training");
         inst.put("5", "5: list all notes about your training");
         inst.put("6", "6: delete note by date");
         inst.put("x", "x: logout and close the program and work on tira");
