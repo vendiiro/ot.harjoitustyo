@@ -24,9 +24,9 @@ Sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
 
 **Asennus ja konfigurointi**
 
-Sovellusta on testattu sekä OSX-että Linux-ympäristössä, suorittamalla sekä jar-tiedosto että suoraan githubista kloonatussa repositoriossa olevaa sovellusta. Jar-tiedoston tapauksessa asentaminen ja testaus on tapahtunut käyttöohjeen mukaisesti, eli niin että käynnistyshakemistossa on ollut käyttöohjeen kuvauksen mukainen config.properties-tiedosto.
+Sovellusta on testattu sekä OSX-että Linux-ympäristössä. Testaus on tällöin tapahtunut suorittamalla sekä jar-tiedosto että suoraan githubista kloonatussa repositoriossa olevaa sovellusta. Jar-tiedoston tapauksessa asentaminen ja testaus on tapahtunut käyttöohjeen mukaisesti
 
-Sovellusta on testattu niin että config.properties-tiedostossa kuvattu tietokantatiedosto on ollut jo luotuna, sekä niin ettei tiedostoa ole vielä ole luotu, jolloin on luonut ne itse.
+Sovellusta on testattu niin että config.properties-tiedostossa kuvattu tietokantatiedosto on ollut jo luotuna, sekä niin ettei tiedostoa ole vielä ole luotu, jolloin ohjelma on luonut sen itse.
 
 **Toiminnallisuudet**
 
