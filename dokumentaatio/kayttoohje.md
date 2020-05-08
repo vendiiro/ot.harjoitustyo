@@ -17,13 +17,16 @@ Ohjelma käynnistetään komentoriviltä komennolla
 **Uuden käyttäjän luominen**
 
 Sovellus aukeaa näkymään, jossa on annettu kaikki ohjelman tarjoamat toiminnot. Uusi käyttäjä luodaan syöttämällä tekstikenttän 1 ja klikkaamalla enter painiketta. Tämän jälkeen käyttäjän tulee antaa oma nimensä ja jokin uniikki käyttäjä nimi. Näiden kohtien jälkeen voidaan siirtyä käyttäjän sisään kirjautumiseen
+![kuva](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/kuvat/Kuvakaappaus%20-%202020-04-27%2016-46-34.png)
 
 **Kirjautuminen järjestelmään**
 
 Jos käyttäjä on jo kertaalleen luonut käyttäjätunnuksen, yllä olevan esimerkin mukaisesti, voidaan nyt onnistuneesti kirjauta järjestelmään. Jos kättäjä seuraa ohjeita, tulee hänen seuraavaksi syöttää 2, jonka jälkeen hänen tulee syöttää keksimänsä uniikki käyttäjänimi. Onnistuessaan tässä järjestelmä kertoo käyttäjän sisäänkirjautumisesta. 
+![kuva](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/kuvat/Kuvakaappaus%20-%202020-04-27%2016-46-34.png)
 
 **Uuden muistiinpanon kirjaaminen**
 
 Uusi muistiinpano luodaan syöttämällä komento 3, ja syöttämällä rajoitusten mukaiset tiedot kuhunkin käyttöliittymän kysymään kohtaan: päivämäärä (halutussa muodossa) , treeniin kulutettu aika = x (10<x<240), sekä muut huomiot tai muistiinpanot treenistä. Jokaisen kohdan jälkeen käyttäjän tulee painaa enter-painiketta.
+![kuva](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/kuvat/Kuvakaappaus%20-%202020-05-08%2011-35-04.png)
 
 
