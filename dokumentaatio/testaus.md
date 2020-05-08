@@ -1,19 +1,35 @@
 # Testausdokumentti
+Ohjelmaa on testattu sekä automatisoiduin yksikkö- ja integraatiotestein JUnitilla kuin myös manuaalisesti tapahtuvien järjestelmätason testien avulla.
 
 ## Yksikkö- ja integraatiotestaus
 
 **Sovelluslogiikka**
 
+Sovelluslogiikan toteuttavat luokat sijaitsevat pakkauksessa paivakirja.domain. Näitä luokkia on testattu yksikkötesteillä NoteServiceUserTest ja NoteServiceNoteTest. Näissä luokissa on hyödynnetty Mockito-valekomponentteja. Kun tetstejä tarkastellaan tästä näkökulmasta niin DAO-luokkien tekemien tietokantahakujen tilalla on ns. Mock-olioita, jolloin näiden olioiden paluuarvot voidaan määritellä jokaiseen testiin sopiviksi. Esimerkki Mock-oliosta: oletetaan että userDao:n metodia x kutsutaan arvolla y, niin annetaan paluuarvona z).
+
+Integraatiotesti NoteServiceTest puolestaan hyödyntää keskusmuistiin tallennettavaa testitietokantaa. Sovelluslogiikan testitapaukset simuloivat toiminnallisuuksia, joita käyttöliittymä suorittaa NoteService-olion avulla. Luokille User ja Note ei ole tehty erikseen montaa omaa testiä, koska ne sisältävät vain yksinkertaisia gettereitä ja settereitä.
+
 **DAO-luokat**
+
+Molemmat DAO-luokat on testattu luomalla keskusmuistiin tallennettava testitietokanta.
 
 **Testauskattavuus**
 
+Sovelluksen testauksen rivikattavuus on 87% ja haaraumakattavuus 75%. Käyttöliittymää ei sisällytetty testeihin, kurssin ohjeiden mukaisesti.
+
 ## Järjestelmätestaus
+
+Sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
 
 **Asennus ja konfigurointi**
 
+Sovellusta on testattu sekä OSX-että Linux-ympäristössä, suorittamalla sekä jar-tiedosto että suoraan githubista kloonatussa repositoriossa olevaa sovellusta. Jar-tiedoston tapauksessa asentaminen ja testaus on tapahtunut käyttöohjeen mukaisesti, eli niin että käynnistyshakemistossa on ollut käyttöohjeen kuvauksen mukainen config.properties-tiedosto.
+
+Sovellusta on testattu niin että config.properties-tiedostossa kuvattu tietokantatiedosto on ollut jo luotuna, sekä niin ettei tiedostoa ole vielä ole luotu, jolloin on luonut ne itse.
+
 **Toiminnallisuudet**
 
+Kaikki määrittelydokumentin ja käyttöohjeen listaamat toiminnallisuudet on testattu manuaalisesti. Kaikkien toiminnallisuuksien yhteydessä on syötekentät yritetty täyttää myös virheellisillä arvoilla kuten tyhjillä kentillä tai kirjaimilla numeroita vaatineissa kentissä.
 
 
 
