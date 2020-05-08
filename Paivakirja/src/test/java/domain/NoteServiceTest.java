@@ -101,6 +101,37 @@ public class NoteServiceTest {
         assertEquals(90, ns.totalTimeWasted());
     }
 
+    @Test
+    public void gettingListOfNotesForUserWorksWhenThereAreNotes() throws SQLException {
+        loginUser();
+        ns.createNote(LocalDate.now(), 100, "saliiiiiiiiiiiiiiiiiiiiiii");
+
+        assertEquals(1, ns.getAll().size());
+
+    }
+
+    @Test
+    public void gettingListOfNotesForCurrentUserWorksWhenThereAreNoNotes() throws SQLException {
+        loginUser();
+
+        assertEquals(0, ns.getAll().size());
+    }
+
+    @Test
+    public void noteIsDeletedCorrectlyWhenUserHasTheNote() throws SQLException {
+        loginUser();
+        ns.createNote(LocalDate.now(), 100, "saliiiiiiiiiiiiiiiiii");
+
+        assertTrue(ns.deleteNote(LocalDate.now()));
+    }
+
+    @Test
+    public void tryingToDeleteNoteFalseWhenThereIsNotNotes() throws SQLException {
+        loginUser();
+
+        assertFalse(ns.deleteNote(LocalDate.now()));
+    }
+
     @After
     public void tearDown() throws IOException {
         Files.deleteIfExists(Paths.get("test-feikkitietokanta.db"));

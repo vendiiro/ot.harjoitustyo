@@ -175,7 +175,7 @@ public class UiText {
         }
         String content = null;
         while (content == null) {
-            System.out.println("Notes about your training session (within 10-500 charecters): ");
+            System.out.println("Notes about your training session (within 10-500 characters): ");
             content = reader.nextLine();
             content = noteContentLenght(content);
         }
@@ -186,7 +186,7 @@ public class UiText {
     private String noteContentLenght(String input) {
         String trimInput = input.trim();
         if (trimInput.length() < 10 || trimInput.length() > 500) {
-            System.out.println("Invalid, note has to be within 10 and 500 characters.");
+            System.out.println("Check your notes length.");
             trimInput = null;
         }
         return trimInput;
