@@ -16,6 +16,7 @@ Molemmat DAO-luokat on testattu luomalla keskusmuistiin tallennettava testitieto
 **Testauskattavuus**
 
 Sovelluksen testauksen rivikattavuus on 87% ja haaraumakattavuus 75%. Käyttöliittymää ei sisällytetty testeihin, kurssin ohjeiden mukaisesti.
+![kuva](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/kuvat/Kuvakaappaus%20-%202020-05-08%2011-06-03.png)
 
 ## Järjestelmätestaus
 
