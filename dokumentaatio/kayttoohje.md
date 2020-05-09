@@ -22,7 +22,7 @@ Sovellus aukeaa näkymään, jossa on annettu kaikki ohjelman tarjoamat toiminno
 **Kirjautuminen järjestelmään**
 
 Jos käyttäjä on jo kertaalleen luonut käyttäjätunnuksen, yllä olevan esimerkin mukaisesti, voidaan nyt onnistuneesti kirjauta järjestelmään. Jos kättäjä seuraa ohjeita, tulee hänen seuraavaksi syöttää 2, jonka jälkeen hänen tulee syöttää keksimänsä uniikki käyttäjänimi. Onnistuessaan tässä järjestelmä kertoo käyttäjän sisäänkirjautumisesta. 
-![kuva](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/kuvat/Kuvakaappaus%20-%202020-04-27%2016-46-34.png)
+![kuva](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/kuvat/Kuvakaappaus%20-%202020-05-08%2011-11-49.png)
 
 **Uuden muistiinpanon kirjaaminen**
 

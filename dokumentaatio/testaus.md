@@ -5,9 +5,11 @@ Ohjelmaa on testattu sekä automatisoiduin yksikkö- ja integraatiotestein JUnit
 
 **Sovelluslogiikka**
 
-Sovelluslogiikan toteuttavat luokat sijaitsevat pakkauksessa paivakirja.domain. Näitä luokkia on testattu yksikkötesteillä NoteServiceUserTest ja NoteServiceNoteTest. Näissä luokissa on hyödynnetty Mockito-valekomponentteja. Kun tetstejä tarkastellaan tästä näkökulmasta niin DAO-luokkien tekemien tietokantahakujen tilalla on ns. Mock-olioita, jolloin näiden olioiden paluuarvot voidaan määritellä jokaiseen testiin sopiviksi. Esimerkki Mock-oliosta: oletetaan että userDao:n metodia x kutsutaan arvolla y, niin annetaan paluuarvona z).
+Sovelluslogiikan toteuttavat luokat sijaitsevat pakkauksessa paivakirja.domain. Näitä luokkia on testattu yksikkötesteillä NoteServiceUserTest ja NoteServiceNoteTest. Näissä luokissa on hyödynnetty Mockito-valekomponentteja. Kun tetstejä tarkastellaan tästä näkökulmasta niin DAO-luokkien tekemien tietokantahakujen tilalla on ns. Mock-olioita, jolloin näiden olioiden paluuarvot voidaan määritellä jokaiseen testiin sopiviksi. Esimerkki Mock-oliosta: oletetaan että userDao:n metodia x kutsutaan arvolla y, niin annetaan paluuarvona z.
 
-Integraatiotesti NoteServiceTest puolestaan hyödyntää keskusmuistiin tallennettavaa testitietokantaa. Sovelluslogiikan testitapaukset simuloivat toiminnallisuuksia, joita käyttöliittymä suorittaa NoteService-olion avulla. Luokille User ja Note ei ole tehty erikseen montaa omaa testiä, koska ne sisältävät vain yksinkertaisia gettereitä ja settereitä.
+Integraatiotesti NoteServiceTest käyttää hyväksi keskusmuistiin tallennettavaa testitietokantaa. Sovelluslogiikan testitapaukset simuloivat toiminnallisuuksia, joita käyttöliittymä suorittaa NoteService-olion avulla.
+
+Luokille User ja Note ei ole tehty erikseen montaa omaa testiä, koska ne sisältävät vain yksinkertaisia gettereitä ja settereitä.
 
 **DAO-luokat**
 
@@ -24,7 +26,7 @@ Sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
 
 **Asennus ja konfigurointi**
 
-Sovellusta on testattu sekä OSX-että Linux-ympäristössä. Testaus on tällöin tapahtunut suorittamalla sekä jar-tiedosto että suoraan githubista kloonatussa repositoriossa olevaa sovellusta. Jar-tiedoston tapauksessa asentaminen ja testaus on tapahtunut käyttöohjeen mukaisesti
+Sovellusta on testattu sekä OSX-että Linux-ympäristössä. Testaus on tapahtunut suorittamalla joko jar-tiedosto että suoraan githubista kloonatussa repositoriossa olevaa sovellusta. Jar-tiedoston tapauksessa asentaminen ja testaus on tapahtunut käyttöohjeen mukaisesti
 
 Sovellusta on testattu niin että config.properties-tiedostossa kuvattu tietokantatiedosto on ollut jo luotuna, sekä niin ettei tiedostoa ole vielä ole luotu, jolloin ohjelma on luonut sen itse.
 
