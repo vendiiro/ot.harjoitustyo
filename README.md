@@ -16,7 +16,7 @@ Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja ki
 
 ## Releaset
 
-[Viikko 6](https://github.com/vendiiro/ot.harjoitustyo/releases/tag/viikko6)
+[Loppurelease](https://github.com/vendiiro/ot.harjoitustyo/releases/tag/viikko6)
 
 ## Dokumentaatio
 [Työaikakirjanpito](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
