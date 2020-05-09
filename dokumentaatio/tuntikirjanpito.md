@@ -15,4 +15,6 @@ PVM | Aika | Mitä tuli tehtyä
 14.4| 2h | sekvennsien tekoa 
 20.4| 4h | testejä ja tekstinkäyttöliittymää
 27.4| 4h | Palautteen hyödyntämistä
-yhteensä| 52h | hyvin saa kulumaan aikaa
+30.4| 3h | javadocit
+8.5| 2h | loppuviimeistelyjä
+yhteensä| 57h | hyvin saa kulumaan aikaa
