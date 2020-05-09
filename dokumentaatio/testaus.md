@@ -5,11 +5,11 @@ Ohjelmaa on testattu sekä automatisoiduin yksikkö- ja integraatiotestein JUnit
 
 **Sovelluslogiikka**
 
-Sovelluslogiikan toteuttavat luokat sijaitsevat pakkauksessa paivakirja.domain. Näitä luokkia on testattu yksikkötesteillä NoteServiceUserTest ja NoteServiceNoteTest. Näissä luokissa on hyödynnetty Mockito-valekomponentteja. Kun tetstejä tarkastellaan tästä näkökulmasta niin DAO-luokkien tekemien tietokantahakujen tilalla on ns. Mock-olioita, jolloin näiden olioiden paluuarvot voidaan määritellä jokaiseen testiin sopiviksi. Esimerkki Mock-oliosta: oletetaan että userDao:n metodia x kutsutaan arvolla y, niin annetaan paluuarvona z.
+Sovelluslogiikan toteuttavat luokat sijaitsevat pakkauksessa [paivakirja.domain](https://github.com/vendiiro/ot.harjoitustyo/tree/master/Paivakirja/src/main/java/paivakirja/domain). Näitä luokkia on testattu yksikkötesteillä [NoteServiceUserTest](https://github.com/vendiiro/ot.harjoitustyo/blob/master/Paivakirja/src/test/java/domain/NoteServiceUserTest.java) ja [NoteServiceNoteTest](https://github.com/vendiiro/ot.harjoitustyo/blob/master/Paivakirja/src/test/java/domain/NoteServiceNoteTest.java). Näissä luokissa on hyödynnetty [Mockito](https://site.mockito.org/)-valekomponentteja. Kun tetstejä tarkastellaan tästä näkökulmasta niin DAO-luokkien tekemien tietokantahakujen tilalla on ns. Mock-olioita, jolloin näiden olioiden paluuarvot voidaan määritellä jokaiseen testiin sopiviksi. Esimerkki Mock-oliosta: oletetaan että userDao:n metodia x kutsutaan arvolla y, niin annetaan paluuarvona z.
 
-Integraatiotesti NoteServiceTest käyttää hyväksi keskusmuistiin tallennettavaa testitietokantaa. Sovelluslogiikan testitapaukset simuloivat toiminnallisuuksia, joita käyttöliittymä suorittaa NoteService-olion avulla.
+Integraatiotesti [NoteServiceTest](https://github.com/vendiiro/ot.harjoitustyo/blob/master/Paivakirja/src/test/java/domain/NoteServiceTest.java) käyttää hyväksi keskusmuistiin tallennettavaa testitietokantaa. Sovelluslogiikan testitapaukset simuloivat toiminnallisuuksia, joita käyttöliittymä suorittaa NoteService-olion avulla.
 
-Luokille User ja Note ei ole tehty erikseen montaa omaa testiä, koska ne sisältävät vain yksinkertaisia gettereitä ja settereitä.
+Luokille User ja Note ei ole tehty erikseen montaa omaa testiä (equals- metodit vain testattu), koska ne sisältävät vain yksinkertaisia gettereitä ja settereitä.
 
 **DAO-luokat**
 
@@ -28,11 +28,11 @@ Sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
 
 Sovellusta on testattu sekä OSX-että Linux-ympäristössä. Testaus on tapahtunut suorittamalla joko jar-tiedosto että suoraan githubista kloonatussa repositoriossa olevaa sovellusta. Jar-tiedoston tapauksessa asentaminen ja testaus on tapahtunut käyttöohjeen mukaisesti
 
-Sovellusta on testattu niin että config.properties-tiedostossa kuvattu tietokantatiedosto on ollut jo luotuna, sekä niin ettei tiedostoa ole vielä ole luotu, jolloin ohjelma on luonut sen itse.
+Sovellusta on testattu niin että [config.properties](https://github.com/vendiiro/ot.harjoitustyo/blob/master/Paivakirja/config.properties)-tiedostossa kuvattu tietokantatiedosto on ollut jo luotuna, sekä niin ettei tiedostoa ole vielä ole luotu, jolloin ohjelma on luonut sen itse.
 
 **Toiminnallisuudet**
 
-Kaikki määrittelydokumentin ja käyttöohjeen listaamat toiminnallisuudet on testattu manuaalisesti. Kaikkien toiminnallisuuksien yhteydessä on syötekentät yritetty täyttää myös virheellisillä arvoilla kuten tyhjillä kentillä tai kirjaimilla numeroita vaatineissa kentissä.
+Kaikki [määrittelydokumentin](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md) ja [käyttöohjeen](https://github.com/vendiiro/ot.harjoitustyo/blob/master/dokumentaatio/kayttoohje.md) listaamat toiminnallisuudet on testattu manuaalisesti. Kaikkien toiminnallisuuksien yhteydessä on syötekentät yritetty täyttää myös virheellisillä arvoilla kuten tyhjillä kentillä tai kirjaimilla numeroita vaatineissa kentissä.
 
 
 
