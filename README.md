@@ -2,8 +2,6 @@
 
 **Treenipäivis-sovellus**
 
-**Sovelluksen nimi pending**
-
 
 ## Harjoitustyö
 Ohjelmalla pystyy pitämään kirjaa treenaamiseen käyttämäänsä aikaa ja kirjaamaan treenissä sattuvia muistiinpanoja kuten loukkaantumisia treeni muotoja yms. Sovellusta voi käyttää useampi rekisteröitynyt käyttäjä, ja jokaisella heista on omat henkilökohtaiset muistiinpanot. 
